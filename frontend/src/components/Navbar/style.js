@@ -1,8 +1,7 @@
-import { makeStyles } from "@mui/styles";
 import { Fade } from "@mui/material";
 const drawerWidth = 0;
 
-export default makeStyles((theme) => ({
+const style = (theme) => ({
   appBar: {
     boxShadow: 'none',
     borderBottom: '1px solid rgba(0, 0, 0, 0.12)',
@@ -65,4 +64,6 @@ export default makeStyles((theme) => ({
       width: '20ch',
     },
   },
-}));
+});
+
+export default style

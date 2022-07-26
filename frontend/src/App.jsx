@@ -1,9 +1,9 @@
-import "./App.css";
-import Products from "./components/Products";
+import { Products, Navbar } from "./components";
 
 const App = () => {
   return (
-    <div className="App">
+    <div>
+      <Navbar></Navbar>
       <Products></Products>
     </div>
   );
