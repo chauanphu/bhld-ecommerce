@@ -24,6 +24,7 @@ const IntroCarousel = () => {
 
     return (
         <Carousel interval={2000} animation='slide' sx={{
+            height: { xs: '60vh', md: '90vh' },
             width: '100vw',
             position: 'relative',
             left: 0

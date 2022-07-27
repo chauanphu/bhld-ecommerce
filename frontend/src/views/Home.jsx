@@ -1,6 +1,6 @@
 import React from 'react'
 import { Box } from '@mui/system'
-import { Typography, Container, Divider } from '@mui/material'
+import { Typography, Container } from '@mui/material'
 import { IntroCarousel, Products } from './components'
 
 import { orange } from '@mui/material/colors';
