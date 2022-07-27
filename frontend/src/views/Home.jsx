@@ -44,6 +44,8 @@ const HomePage = () => {
             <Container sx={{ mt: 5 }}>
                 <Blogs />
             </Container>
+            {/* Footer */}
+
         </>
     )
 }

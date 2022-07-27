@@ -1,4 +1,4 @@
-import { Card, CardContent, Box, Rating, Typography, Skeleton } from "@mui/material"
+import { Card, CardContent, Typography, Skeleton } from "@mui/material"
 
 const BlogCard = ({ item }) => {
     return (
