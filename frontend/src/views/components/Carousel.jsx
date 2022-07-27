@@ -23,7 +23,11 @@ const IntroCarousel = () => {
     ]
 
     return (
-        <Carousel interval={2000} animation='slide'>
+        <Carousel interval={2000} animation='slide' sx={{
+            width: '100vw',
+            position: 'relative',
+            left: 0
+        }}>
             {
                 items.map((item, i) => <Item key={i} item={item} />)
             }
@@ -38,7 +42,7 @@ const Item = ({ item }) => {
             sx={{
                 height: {
                     xs: '50vh',
-                    md: '100vh'
+                    md: '80vh'
                 },
                 width: '100vw'
             }}
