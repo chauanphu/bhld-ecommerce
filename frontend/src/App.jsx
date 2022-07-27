@@ -1,10 +1,9 @@
-import { Products, Navbar } from "./components";
+import { Navbar } from "./components";
 
 const App = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <Products></Products>
     </div>
   );
 };

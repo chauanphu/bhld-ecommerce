@@ -1,27 +1,53 @@
 import React from "react";
-import { AppBar, Toolbar, IconButton, Badge, Typography } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
-import useStyle from './style'
+import { useState } from 'react';
+import { AppBar, Toolbar, Tabs, Tab, Stack, Typography } from "@mui/material";
 
 const Navbar = () => {
-    const classes = useStyle()
-
+    const [tabvalue, setTab] = useState('1');
+    const handleTabChange = (event, newValue) => {
+        setTab(newValue)
+    };
+    const tabs = [
+        { label: 'Trang chu', value: '1' },
+        { label: 'San pham', value: '2' },
+        { label: 'Lien lac', value: '3' },
+    ]
     return (
         <>
-            <AppBar position="fixed" className="classess.appBar" color="inherit">
+            <AppBar sx={{
+                height: "30px",
+                backgroundColor: 'gray',
+                position: 'static'
+            }}>
+                <Stack direction="row" spacing={2} sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                }}>
+                    <Typography variant="body2">SĐT: 0945 316 280</Typography>
+                    <Typography variant="body2">Mở cửa từ 7:00 - 17:00 từ T2 - T6</Typography>
+                </Stack>
+            </AppBar>
+            {/* Navbar */}
+            <AppBar sx={{
+                height: "80px",
+                backgroundColor: 'white',
+                position: 'static',
+            }}>
                 <Toolbar>
-                    <Typography variant="h6" className={classes.title} color="inherit">
-                        <img src="" alt="CGP TECH" height='25px' className={classes.image} />
-                        CGP TECH
-                    </Typography>
-                    <div className={classes.grow}></div>
-                    <div className={classes.button}>
-                        <IconButton aria-label="Show cart items" color="inherit">
-                            <Badge badgeContent={2} color="secondary">
-                                <ShoppingCart></ShoppingCart>
-                            </Badge>
-                        </IconButton>
-                    </div>
+                    <Tabs value={tabvalue} onChange={handleTabChange} centered={true}
+                        sx={{
+                            width: '100%',
+                        }}
+                    >
+                        {tabs.map((tab) => <Tab key={tab.value} label={tab.label} value={tab.value} sx={{
+                            typography: {
+                                md: 'h6'
+                            },
+                            color: 'green'
+                        }} />)}
+
+                    </Tabs>
                 </Toolbar>
             </AppBar>
         </>
