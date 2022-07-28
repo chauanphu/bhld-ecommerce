@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Container, List, ListItem, ListItemText, ListItemIcon } from "@mui/material"
+import { Box, Typography, Grid, Container, List, ListItem, ListItemText, ListItemIcon, Skeleton } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import {
@@ -17,41 +17,59 @@ const Footer = () => {
                     py: 5,
                     backgroundColor: green[800]
                 }}>
-                    <Typography variant="h4">Công ty TNHH Thương mại Dệt may Trần Gia Phát</Typography>
+                    <Typography textAlign="center" variant="h4">Công ty TNHH Thương mại Dệt may Trần Gia Phát</Typography>
                 </Box>
                 <Box sx={{
                     py: 3,
-                    backgroundColor: grey[800]
+                    backgroundColor: grey[900]
                 }}>
-                    <Container>
+                    <Container maxWidth='lg'>
                         <Grid container>
-                            <Grid item md={4} backgroundColor="white">
-                                <Box display="flex" alignItems="center" justifyContent="center" marginBottom={2} >
-                                    <Typography variant="h5">Liên hệ</Typography>
-                                </Box>
+                            <Grid sx={{ color: "white" }} item lg={3}>
+                                <Typography sx={{
+                                    mt: 2,
+                                    color: 'green'
+                                }} variant="h5">Liên hệ</Typography>
                                 <List>
                                     <ListItem>
-                                        <ListItemIcon><PhoneIcon /></ListItemIcon>
+                                        <ListItemIcon sx={{ color: "white" }}><PhoneIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
                                             0945 316 280
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem>
-                                        <ListItemIcon><PhoneIcon /></ListItemIcon>
+                                        <ListItemIcon sx={{ color: "white" }}><PhoneIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
                                             0945 316 280
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem>
-                                        <ListItemIcon><EmailIcon /></ListItemIcon>
+                                        <ListItemIcon sx={{ color: "white" }}><EmailIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
                                             phuclinh@baoholaodong.com
                                         </ListItemText>
                                     </ListItem>
                                 </List>
                             </Grid>
-                            <Grid item md={8} backgroundColor="white">
-
+                            <Grid sx={{ color: "white", mt: 2, ml: 2 }} item lg={4}>
+                                <Typography sx={{ color: 'green' }} variant="h5">Cửa hàng</Typography>
+                                <List>
+                                    <ListItemText >
+                                        48/5 Thái Thị Giữ xã Bà Điểm, Hóc
+                                        Môn, TP HCM
+                                    </ListItemText>
+                                    <ListItemText sx={{ my: 2 }}>
+                                        Mở cửa: 7:00 - 18:00 | Thứ 2 - 7
+                                    </ListItemText>
+                                    <ListItemText sx={{ color: 'red' }}>
+                                        CN nghỉ
+                                    </ListItemText>
+                                </List>
+                            </Grid>
+                            <Grid sx={{ color: "white", mt: 2, my: 2 }} item lg={3}>
+                                <Skeleton variant="rectangular" sx={{
+                                    minWidth: 350,
+                                }} height={200}></Skeleton>
                             </Grid>
                         </Grid>
                     </Container>
