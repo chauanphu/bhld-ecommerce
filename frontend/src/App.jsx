@@ -1,13 +1,16 @@
 import { Navbar, Footer } from "./components";
-import HomePage from "./views/Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./views/Home/components/Home";
 
 const App = () => {
   return (
-    <div>
+    <Router>
       <Navbar></Navbar>
-      <HomePage></HomePage>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
       <Footer />
-    </div>
+    </Router>
   );
 };
 

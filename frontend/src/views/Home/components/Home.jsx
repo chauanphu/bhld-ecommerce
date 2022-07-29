@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@mui/system'
 import { Typography, Container } from '@mui/material'
-import { IntroCarousel, Products, Blogs } from './components'
+import { IntroCarousel, Products, Blogs } from '.'
 
 import { orange } from '@mui/material/colors';
 
