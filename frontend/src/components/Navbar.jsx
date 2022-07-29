@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from 'react';
 import { AppBar, Toolbar, Tabs, Tab, Stack, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-    const [tabvalue, setTab] = useState('1');
+    const [tabvalue, setTab] = useState('0');
     const handleTabChange = (event, newValue) => {
         setTab(newValue)
     };
     const tabs = [
-        { label: 'Trang chu', value: '1' },
-        { label: 'San pham', value: '2' },
-        { label: 'Lien lac', value: '3' },
+        { label: 'Trang chu', path: '/', value: '0' },
+        { label: 'San pham', path: '/products', value: '1' },
+        { label: 'Lien lac', path: '/contact', value: '2' },
     ]
     return (
         <>
@@ -40,12 +41,17 @@ const Navbar = () => {
                             width: '100%',
                         }}
                     >
-                        {tabs.map((tab) => <Tab key={tab.value} label={tab.label} value={tab.value} sx={{
-                            typography: {
-                                md: 'h6'
-                            },
-                            color: 'green'
-                        }} />)}
+                        {tabs.map((tab) => (
+                            // <Link key={tab.value} style={{ textDecoration: 'none' }} to={tab.path}>
+                            <Tab key={tab.value} component={Link} to={tab.path} label={tab.label} value={tab.value} sx={{
+                                typography: {
+                                    md: 'h6'
+                                },
+                                color: 'green'
+                            }} />
+                            // </Link>
+                        )
+                        )}
 
                     </Tabs>
                 </Toolbar>
