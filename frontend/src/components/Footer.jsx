@@ -7,7 +7,7 @@ import {
 
 const Footer = () => {
     return (
-        <footer >
+        <footer>
             <Box>
                 <Box sx={{
                     display: "flex",
@@ -83,7 +83,7 @@ const Footer = () => {
                 backgroundColor: blueGrey
                 [900]
             }}>
-                <Typography color="white">Bản quyền thuộc CTY TNHH Thương mại Dệt may Trần Gia Phát || thiết kế bởi CGP</Typography>
+                <Typography color="white">Bản quyền thuộc CTY TNHH Thương mại Dệt may Trần Gia Phát || thiết kế bởi CAP</Typography>
             </Box>
         </footer>
     )
