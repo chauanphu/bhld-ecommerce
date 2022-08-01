@@ -4,7 +4,37 @@ import {
 import { Routes, Route } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
+import Products from "../../components/Products";
 
+const Header = () => {
+    return (
+        <Box display="flex" flexDirection="row" marginBottom={1} sx={{ justifyContent: { xs: "space-between", md: 'end' } }} >
+            <Button startIcon={<SortIcon />}>
+                Giá giảm dần
+            </Button>
+            <Autocomplete
+                freeSolo
+                id="free-solo-2-demo"
+                disableClearable
+                options={[]}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        label="Tìm kiếm sản phẩm"
+                        InputProps={{
+                            ...params.InputProps,
+                            type: 'search',
+                        }}
+                    />
+                )}
+                sx={{
+                    ml: 2,
+                    minWidth: { xs: 150, md: 200 }
+                }}
+            />
+        </Box>
+    )
+}
 const ProductPage = () => {
     const categories = [
         { name: 'Đồng phục công nhân' },
@@ -60,33 +90,8 @@ const ProductPage = () => {
                             md: '80%'
                         }
                     }}>
-                        <Box display="flex" flexDirection="row" marginBottom={1} sx={{ justifyContent: { xs: "space-between", md: 'end' } }} >
-                            <Button startIcon={<SortIcon />}>
-                                Giá giảm dần
-                            </Button>
-                            <Autocomplete
-                                freeSolo
-                                id="free-solo-2-demo"
-                                disableClearable
-                                options={[]}
-                                renderInput={(params) => (
-                                    <TextField
-                                        {...params}
-                                        label="Tìm kiếm sản phẩm"
-                                        InputProps={{
-                                            ...params.InputProps,
-                                            type: 'search',
-                                        }}
-                                    />
-                                )}
-                                sx={{
-                                    ml: 2,
-                                    minWidth: { xs: 150, md: 200 }
-                                }}
-                            />
-                        </Box>
                         <Routes>
-                            <Route path="/" element={<>Hello</>}></Route>
+                            <Route path="/" element={<Products header={<Header />} showHeader={false} />}></Route>
                         </Routes>
                     </Box>
                 </Box>
