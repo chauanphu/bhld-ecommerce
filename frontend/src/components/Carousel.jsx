@@ -2,9 +2,9 @@ import React from 'react'
 import Carousel from 'react-material-ui-carousel'
 import { Box } from '@mui/material'
 
-import carousel_1 from '../../../assets/carousel-1.jpg'
-import carousel_2 from '../../../assets/carousel-2.jpg'
-import carousel_3 from '../../../assets/carousel-3.jpg'
+import carousel_1 from '../assets/carousel-1.jpg'
+import carousel_2 from '../assets/carousel-2.jpg'
+import carousel_3 from '../assets/carousel-3.jpg'
 
 const IntroCarousel = () => {
     var items = [
