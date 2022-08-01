@@ -4,6 +4,7 @@ const NotFoundPage = () => {
     return (
         <Box height="50vh" display="flex">
             <Typography sx={{
+                typography: { xs: "h4", md: "h3" },
                 postion: 'absolute',
                 top: 0,
                 right: 0,
@@ -11,7 +12,7 @@ const NotFoundPage = () => {
                 left: 0,
                 margin: 'auto',
                 textAlign: 'center'
-            }} variant="h3" color="gray">404 Không tìm thấy</Typography>
+            }} color="gray">404 Không tìm thấy</Typography>
         </Box >)
 }
 
