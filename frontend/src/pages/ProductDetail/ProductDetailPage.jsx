@@ -1,7 +1,11 @@
 
+import { Box } from "@mui/material"
 const ProductDetailPage = () => {
     return (<>
-        Product Page
+        <Box display="flex">
+            <Box>Image</Box>
+            <Box>Content</Box>
+        </Box>
     </>)
 }
 

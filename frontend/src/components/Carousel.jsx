@@ -6,7 +6,7 @@ import carousel_1 from '../assets/carousel-1.jpg'
 import carousel_2 from '../assets/carousel-2.jpg'
 import carousel_3 from '../assets/carousel-3.jpg'
 
-const IntroCarousel = () => {
+const MyCarousel = () => {
     var items = [
         {
             name: "Random Name #1",
@@ -52,4 +52,4 @@ const Item = ({ item }) => {
         />
     )
 }
-export default IntroCarousel
+export default MyCarousel

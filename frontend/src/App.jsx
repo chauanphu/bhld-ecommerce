@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ProductPage from './pages/Products/ProductPage'
 import ProductDetailPage from './pages/ProductDetail/ProductDetailPage'
 import CategoryPage from './pages/Category/CategoryPage'
+import NotFoundPage from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -11,9 +12,10 @@ const App = () => {
       <Navbar></Navbar>
       <Routes>
         <Route exact path="/" element={<ProductPage />}>
-          <Route exact path="/" element={<CategoryPage />} />
-          <Route path="/:id" element={<ProductDetailPage />} />
+          <Route path="/" element={<CategoryPage />} />
+          <Route path="/product/:id" element={<ProductDetailPage />} />
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </Router>
