@@ -17,7 +17,9 @@ const Footer = () => {
                     py: 5,
                     backgroundColor: green[800]
                 }}>
-                    <Typography textAlign="center" variant="h4">Công ty TNHH Thương mại Dệt may Trần Gia Phát</Typography>
+                    <Typography textAlign="center" sx={{
+                        typography: { xs: "h5", md: "h4" }
+                    }}>Công ty TNHH Thương mại Dệt may Trần Gia Phát</Typography>
                 </Box>
                 <Box sx={{
                     py: 3,
@@ -83,7 +85,7 @@ const Footer = () => {
                 backgroundColor: blueGrey
                 [900]
             }}>
-                <Typography color="white">Bản quyền thuộc CTY TNHH Thương mại Dệt may Trần Gia Phát || thiết kế bởi CAP</Typography>
+                <Typography color="white" textAlign="center">Bản quyền thuộc CTY TNHH Thương mại Dệt may Trần Gia Phát || thiết kế bởi CAP</Typography>
             </Box>
         </footer>
     )

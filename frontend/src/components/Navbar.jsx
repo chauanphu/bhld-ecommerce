@@ -15,9 +15,9 @@ const Navbar = () => {
         setDrawer(newValue)
     }
     const tabs = [
-        { label: 'Trang chu', path: '/', value: '0' },
-        { label: 'San pham', path: '/products', value: '1' },
-        { label: 'Lien lac', path: '/contact', value: '2' },
+        { label: 'San pham', path: '/', value: '0' },
+        // { label: 'San pham', path: '/products', value: '1' },
+        { label: 'Lien lac', path: '/contact', value: '1' },
     ]
     return (
         <>
@@ -84,7 +84,7 @@ const Navbar = () => {
                 </Toolbar>
             </AppBar>
             <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)}>
-                <Tabs value={tabvalue} orientation="vertical" onChange={handleTabChange}>
+                <Tabs value={tabvalue} orientation="vertical" onChange={handleTabChange} sx={{ mt: 5 }}>
                     {tabs.map((tab) => (
                         <Tab key={tab.value} component={Link} to={tab.path} label={tab.label} value={tab.value} sx={{
                             typography: {
