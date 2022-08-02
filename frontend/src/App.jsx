@@ -5,6 +5,7 @@ import ProductPage from './pages/Products/ProductPage'
 import ProductDetailPage from './pages/ProductDetail/ProductDetailPage'
 import CategoryPage from './pages/Category/CategoryPage'
 import NotFoundPage from "./pages/NotFound";
+import "swiper/css/bundle";
 
 const App = () => {
   return (

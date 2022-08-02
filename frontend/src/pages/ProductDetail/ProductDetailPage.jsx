@@ -1,7 +1,7 @@
 
 import { Box, Skeleton, Container, Typography, Stack, Rating, Chip, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
-import Products from "../../components/Products";
+import Carousel from "../../components/Carousel";
 
 const Header = () => {
     return (<Box sx={{
@@ -16,10 +16,17 @@ const Header = () => {
     </Box>)
 }
 const ProductDetailPage = () => {
+    const related_items = [
+        { id: 0, name: 'Lorem ipsum', price: 285000 },
+        { id: 1, name: 'Lorem ipsum', price: 285000 },
+        { id: 2, name: 'Lorem ipsum', price: 285000 },
+        { id: 3, name: 'Lorem ipsum', price: 285000 },
+    ]
     return (<>
         <Container maxWidth="xl">
             <Box display="flex" sx={{
                 flexDirection: { xs: 'column', md: 'row' },
+                mb: 10
             }}>
                 <Box sx={{
                     alignSelf: { xs: 'center', md: 'start' }
@@ -54,7 +61,8 @@ const ProductDetailPage = () => {
                 </Box>
             </Box>
             <Box>
-                <Products header={<Header />}></Products>
+                <Header />
+                <Carousel items={related_items}></Carousel>
             </Box>
         </Container>
     </>)

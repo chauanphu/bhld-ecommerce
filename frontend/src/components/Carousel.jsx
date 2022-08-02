@@ -1,55 +1,44 @@
-import React from 'react'
-import Carousel from 'react-material-ui-carousel'
-import { Box } from '@mui/material'
+import React from "react";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
 
-import carousel_1 from '../assets/carousel-1.jpg'
-import carousel_2 from '../assets/carousel-2.jpg'
-import carousel_3 from '../assets/carousel-3.jpg'
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
 
-const MyCarousel = () => {
-    var items = [
-        {
-            name: "Random Name #1",
-            img: carousel_1
-        },
-        {
-            name: "Random Name #2",
-            img: carousel_2
-        },
-        {
-            name: "Random Name #2",
-            img: carousel_3
-        }
-    ]
+import './swiper-style.css'
+// import required modules
+import { Pagination } from "swiper";
 
+import ProductCard from "./Cards/ProductCard";
+
+export default function Carousel({ items }) {
     return (
-        <Carousel interval={2000} animation='slide' sx={{
-            height: { xs: '60vh', md: '90vh' },
-            width: '100vw',
-            position: 'relative',
-            left: 0
-        }}>
-            {
-                items.map((item, i) => <Item key={i} item={item} />)
-            }
-        </Carousel>
-    )
-}
+        <>
+            <Swiper
+                slidesPerView={1}
+                spaceBetween={10}
+                pagination={{
+                    clickable: true,
+                }}
+                breakpoints={{
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 4,
+                        spaceBetween: 40,
+                    },
 
-const Item = ({ item }) => {
-    return (
-        <Box
-            component="img"
-            sx={{
-                height: {
-                    xs: '50vh',
-                    md: '80vh'
-                },
-                width: '100vw'
-            }}
-            alt={item.name}
-            src={item.img}
-        />
-    )
+                }}
+                modules={[Pagination]}
+                className="mySwiper"
+            >
+                {items.map((item) => {
+                    return (<SwiperSlide key={item.id}><ProductCard item={item} /></SwiperSlide>)
+                })}
+            </Swiper>
+        </>
+    );
 }
-export default MyCarousel
