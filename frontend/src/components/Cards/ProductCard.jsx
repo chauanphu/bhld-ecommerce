@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ProductCard = ({ item }) => {
     return (
-        <CardActionArea sx={{ mb: 5, mx: 2, width: 'fit-content' }} LinkComponent={Link} to="product/1">
+        <CardActionArea sx={{ mb: 5, mx: 2, width: 'fit-content' }} LinkComponent={Link} to={"/product/" + item.id}>
             <Card>
                 <CardHeader title={
                     <Typography sx={{ typography: { xs: 'h7', md: 'h5' } }}>{item.name}</Typography>

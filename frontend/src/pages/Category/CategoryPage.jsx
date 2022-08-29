@@ -1,3 +1,4 @@
+// Import Components
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
 import Products from "../../components/Products";
@@ -5,7 +6,11 @@ import {
     Box, List, ListItem, ListItemText, ListItemButton, Divider, Button, TextField, Autocomplete,
     Pagination, Typography
 } from "@mui/material"
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
+
+// Import State
+import categories from '../../services/category';
+import products from '../../services/products';
 
 const Header = () => {
     return (
@@ -49,13 +54,6 @@ const Bottom = () => {
 }
 
 const CategoryPage = () => {
-    const categories = [
-        { name: 'Đồng phục công nhân' },
-        { name: 'Đồng phục công sở' },
-        { name: 'Đồng phục công nhân' },
-        { name: 'Đồng phục công nhân' },
-        { name: 'Đồng phục công nhân' },
-    ]
     return (<Box display="flex" flexDirection="row">
         {/* Category */}
         <Box sx={{
@@ -70,7 +68,7 @@ const CategoryPage = () => {
                     return (
                         <Box key={index}>
                             <ListItem sx={{ padding: 0 }}>
-                                <ListItemButton >
+                                <ListItemButton component={Link} to={'/category/' + el.url}>
                                     <ListItemText>{el.name}</ListItemText>
                                 </ListItemButton>
                             </ListItem>
@@ -81,6 +79,7 @@ const CategoryPage = () => {
 
             </List>
         </Box>
+        {/* Main Content */}
         <Box sx={{
             width: {
                 xs: '100%',
@@ -88,7 +87,7 @@ const CategoryPage = () => {
             }
         }}>
             <Routes>
-                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={<Bottom />} />}></Route>
+                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={<Bottom />} items={products} />}></Route>
             </Routes>
         </Box>
     </Box>)

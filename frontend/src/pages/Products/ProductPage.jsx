@@ -1,5 +1,5 @@
 import {
-    Breadcrumbs, Link, Typography, Container,
+    Container, Box
 } from "@mui/material"
 import { Outlet } from "react-router-dom"
 
@@ -8,7 +8,10 @@ const ProductPage = () => {
     return (
         <>
             <Container maxWidth='xl'>
-                <Breadcrumbs aria-label="breadcrumb" sx={{ my: 3 }} separator=">">
+                <Box marginBottom={5}>
+
+                </Box>
+                {/* <Breadcrumbs aria-label="breadcrumb" sx={{ my: 3 }} separator=">">
                     <Link underline="hover" color="inherit" href="/">
                         MUI
                     </Link>
@@ -20,7 +23,7 @@ const ProductPage = () => {
                         Core
                     </Link>
                     <Typography color="text.primary">Breadcrumbs</Typography>
-                </Breadcrumbs>
+                </Breadcrumbs> */}
                 <Outlet />
             </Container>
         </>
