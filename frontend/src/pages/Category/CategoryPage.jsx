@@ -1,12 +1,18 @@
-// Import Components
+// Import Custom Components
+import Products from "../../components/Products";
+import Dropdown from "../../components/Dropdown";
+//
+
+// Import Material Components
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
-import Products from "../../components/Products";
 import {
-    Box, List, ListItem, ListItemText, ListItemButton, Divider, Button, TextField, Autocomplete,
+    Box, Button, TextField, Autocomplete,
     Pagination, Typography
 } from "@mui/material"
-import { Routes, Route, Link } from 'react-router-dom'
+//
+
+import { Routes, Route } from 'react-router-dom'
 
 // Import State
 import categories from '../../services/category';
@@ -63,21 +69,7 @@ const CategoryPage = () => {
                 <MenuIcon sx={{ mr: 1 }} />
                 <Typography>Danh mục sản phẩm</Typography>
             </Box>
-            <List>
-                {categories.map((el, index) => {
-                    return (
-                        <Box key={index}>
-                            <ListItem sx={{ padding: 0 }}>
-                                <ListItemButton component={Link} to={'/category/' + el.url}>
-                                    <ListItemText>{el.name}</ListItemText>
-                                </ListItemButton>
-                            </ListItem>
-                            <Divider />
-                        </Box>
-                    )
-                })}
-
-            </List>
+            <Dropdown items={categories} />
         </Box>
         {/* Main Content */}
         <Box sx={{

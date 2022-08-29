@@ -1,8 +1,11 @@
-import React from "react";
 import { useState } from 'react';
 import { AppBar, Toolbar, Tabs, Tab, Stack, Typography, Skeleton, IconButton, Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
+
+import Dropdown from './Dropdown';
+//Import State
+import category from '../services/category'
 
 const Navbar = () => {
     const [tabvalue, setTab] = useState('0');
@@ -14,10 +17,19 @@ const Navbar = () => {
     const toggleDrawer = (event, newValue) => {
         setDrawer(newValue)
     }
+    const style = {
+        typography: 'h6',
+        color: 'green',
+        py: 0.5,
+    }
     const tabs = [
-        { label: 'San pham', path: '/', value: '0' },
-        // { label: 'San pham', path: '/products', value: '1' },
-        { label: 'Lien lac', path: '/contact', value: '1' },
+        {
+            name: 'San pham', url: '/', value: '0', style: style, sub_items: category
+        },
+        // { label: 'San pham', url: '/products', value: '1' },
+        {
+            name: 'Lien lac', url: '/contact', value: '1', style: style
+        },
     ]
     return (
         <>
@@ -72,7 +84,7 @@ const Navbar = () => {
                 }}>
                     <Tabs value={tabvalue} onChange={handleTabChange}>
                         {tabs.map((tab) => (
-                            <Tab key={tab.value} component={Link} to={tab.path} label={tab.label} value={tab.value} sx={{
+                            <Tab key={tab.value} component={Link} to={tab.url} label={tab.name} value={tab.value} sx={{
                                 typography: {
                                     md: 'h6'
                                 },
@@ -83,18 +95,8 @@ const Navbar = () => {
                     </Tabs>
                 </Toolbar>
             </AppBar>
-            <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)}>
-                <Tabs value={tabvalue} orientation="vertical" onChange={handleTabChange} sx={{ mt: 5 }}>
-                    {tabs.map((tab) => (
-                        <Tab key={tab.value} component={Link} to={tab.path} label={tab.label} value={tab.value} sx={{
-                            typography: {
-                                md: 'h6'
-                            },
-                            color: 'green'
-                        }} />
-                    )
-                    )}
-                </Tabs>
+            <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)} sx={{ px: 2 }}>
+                <Dropdown items={tabs} />
             </Drawer>
         </>
     )
