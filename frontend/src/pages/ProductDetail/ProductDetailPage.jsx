@@ -24,7 +24,6 @@ const ProductDetailPage = () => {
     const [detail, setDetail] = useState({})
 
     const { id } = useParams()
-    console.log('Run')
 
     useEffect(() => {
         Product.get_related().then(data => setRelated(data))
