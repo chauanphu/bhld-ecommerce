@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Container, List, ListItem, ListItemText, ListItemIcon, Skeleton } from "@mui/material"
+import { Box, Typography, Grid, Container, List, ListItem, ListItemText, ListItemIcon } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import {
@@ -69,9 +69,11 @@ const Footer = () => {
                                 </List>
                             </Grid>
                             <Grid sx={{ color: "white", mt: 2, my: 2 }} item lg={3}>
-                                <Skeleton variant="rectangular" sx={{
+                                <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d489.8298203115496!2d106.60610188976361!3d10.838947415056875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752a4a74b55809%3A0xa1c2b8a88cdedec7!2sC%C3%94NG%20TY%20TNHH%20SX%20TM%20DV%20CH%C3%82U%20GIA%20PH%C3%81T!5e0!3m2!1sen!2s!4v1661824687577!5m2!1sen!2s" sx={{
+                                    height: 200,
                                     minWidth: 350,
-                                }} height={200}></Skeleton>
+                                    border: 0
+                                }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
                             </Grid>
                         </Grid>
                     </Container>

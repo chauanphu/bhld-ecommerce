@@ -15,8 +15,9 @@ import {
 import { Routes, Route } from 'react-router-dom'
 
 // Import State
-import categories from '../../services/category';
-import products from '../../services/products';
+import Category from '../../services/category';
+import Product from '../../services/products';
+import { useState, useEffect } from "react";
 
 const Header = () => {
     return (
@@ -60,6 +61,27 @@ const Bottom = () => {
 }
 
 const CategoryPage = () => {
+    //State
+    const [categories, setCategory] = useState([])
+    const [products, setProduct] = useState([])
+    //Effects
+    useEffect(() => {
+        Category.get_all()
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setCategory(data)
+            })
+        Product.get_all()
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                setProduct(data)
+            })
+    }, [])
+
     return (<Box display="flex" flexDirection="row">
         {/* Category */}
         <Box sx={{

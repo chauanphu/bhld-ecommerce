@@ -13,7 +13,7 @@ const Products = ({ header, bottom, items }) => {
                 <Grid container spacing={2} columns={{ xs: 2, md: 3, lg: 4 }} justifyContent={{ xs: "center", md: "space-between" }}>
                     {items.map((item) => {
                         return (
-                            <ProductCard key={item.name} item={item}></ProductCard>
+                            <ProductCard key={item.id} item={item}></ProductCard>
                         )
                     })}
                 </Grid>
