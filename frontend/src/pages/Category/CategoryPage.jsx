@@ -1,9 +1,9 @@
-// Import Custom Components
+///////// Import Custom Components /////////
 import Products from "../../components/Products";
 import Dropdown from "../../components/Dropdown";
-//
 
-// Import Material Components
+
+///////// Import Material Components /////////
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
 import {
@@ -12,12 +12,13 @@ import {
 } from "@mui/material"
 //
 
+//////////////////// Import React ////////////////////
 import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from "react";
 
-// Import State
+///////// Import State /////////
 import Category from '../../services/category';
 import Product from '../../services/products';
-import { useState, useEffect } from "react";
 
 const Header = () => {
     return (

@@ -1,9 +1,11 @@
-
+//////// Import Material Components ////////
 import { Box, Skeleton, Container, Typography, Stack, Rating, Chip, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
 import Carousel from "../../components/Carousel";
 
-import related_products from "../../services/related_products";
+import Product from "../../services/products";
+import { useEffect, useState } from "react";
+
 const Header = () => {
     return (<Box sx={{
         display: "flex",
@@ -17,6 +19,11 @@ const Header = () => {
     </Box>)
 }
 const ProductDetailPage = () => {
+    const [related_products, setRelated] = useState([])
+    useEffect(() => {
+        Product.get_related().then(data => setRelated(data))
+    }, [])
+
     return (<>
         <Container maxWidth="xl">
             <Box display="flex" sx={{
