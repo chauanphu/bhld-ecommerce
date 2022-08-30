@@ -15,10 +15,10 @@ var Product = {
     },
     /**
      * Return detailed data of a product
-     * @param {number} id Id to be searched
+     * @param {string} id Id to be searched
      */
     get_by_id: (id) => {
-
+        return fetch(link_related + '/' + id).then(res => { return res.json() })
     }
 }
 
