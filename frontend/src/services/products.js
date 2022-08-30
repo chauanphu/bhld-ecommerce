@@ -2,8 +2,19 @@ const link = "http://localhost:8000/products"
 const link_related = "http://localhost:8000/related_products"
 
 var Product = {
-    get_all: () => {
-        return fetch(link)
+    /**
+     * Get all products
+     * @param {number} page 
+     * @returns {Promise<{total_count: number, data: Promise<Array>}>} data
+     */
+    get_all: (page) => {
+        return fetch(link + '?_page=' + page + '&_limit=12')
+            .then(res => {
+                return {
+                    total_count: res.headers.get('X-Total-Count'),
+                    data: res.json()
+                }
+            })
     },
 
     /**

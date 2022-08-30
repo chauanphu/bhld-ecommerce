@@ -50,14 +50,21 @@ const Header = () => {
     )
 }
 
-const Bottom = () => {
+const Bottom = ({ count = 0, onChange = (event, page) => { } }) => {
+    const page = Math.ceil(count / 12)
     return (
-        <Pagination sx={{
-            '.MuiPagination-ul': {
-                display: 'flex',
-                justifyContent: 'center'
+        <>
+            {
+                (page > 1) &&
+                <Pagination sx={{
+                    '.MuiPagination-ul': {
+                        display: 'flex',
+                        justifyContent: 'center'
+                    }
+                }} count={page} onChange={onChange} />
             }
-        }} count={12} />)
+        </>
+    )
 
 }
 
@@ -65,6 +72,19 @@ const CategoryPage = () => {
     //State
     const [categories, setCategory] = useState([])
     const [products, setProduct] = useState([])
+    const [count, setCount] = useState(0)
+
+    const updateData = (event, page) => {
+        Product.get_all(page)
+            .then(res => {
+                const { total_count, data } = res
+                setCount(total_count)
+                return data
+            })
+            .then(data => {
+                setProduct(data)
+            })
+    }
     //Effects
     useEffect(() => {
         Category.get_all()
@@ -74,13 +94,7 @@ const CategoryPage = () => {
             .then(data => {
                 setCategory(data)
             })
-        Product.get_all()
-            .then(res => {
-                return res.json()
-            })
-            .then(data => {
-                setProduct(data)
-            })
+        updateData()
     }, [])
 
     return (<Box display="flex" flexDirection="row">
@@ -102,7 +116,9 @@ const CategoryPage = () => {
             }
         }}>
             <Routes>
-                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={<Bottom />} items={products} />}></Route>
+                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
+                    <Bottom count={count} onChange={updateData} />
+                } items={products} />}></Route>
             </Routes>
         </Box>
     </Box>)
