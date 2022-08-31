@@ -1,9 +1,9 @@
 import { Navbar, Footer } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import HomePage from "./pages/Home/HomePage";
-import ProductPage from './pages/Products/ProductPage'
-import ProductDetailPage from './pages/ProductDetail/ProductDetailPage'
-import CategoryPage from './pages/Category/CategoryPage'
+import ProductPage from './pages/ProductPage'
+import ProductDetailPage from './pages/ProductDetailPage'
+import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from "./pages/NotFound";
 import "swiper/css/bundle";
 
