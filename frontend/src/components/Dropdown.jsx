@@ -20,7 +20,7 @@ const Dropdown = ({ items, isSub = false }) => {
                                 <ListItemText sx={{ ...el.style }} disableTypography>{el.name}</ListItemText>
                             </ListItemButton>
                             {
-                                el.sub_items ?
+                                (el.sub_items === []) ?
                                     (!open ?
                                         (<IconButton edge="end" onClick={handleExpand} sx={{ mr: 1 }}>
                                             <ExpandMoreIcon />
