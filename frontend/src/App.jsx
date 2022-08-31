@@ -6,6 +6,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from "./pages/NotFound";
 import "swiper/css/bundle";
+import LoginPage from "./pages/LoginPage";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/category/:id" element={<CategoryPage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
         </Route>
+        <Route path="/login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
