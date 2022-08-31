@@ -68,6 +68,22 @@ const Bottom = ({ count = 0, onChange = (event, page) => { } }) => {
 
 }
 
+const EmptyPage = () => {
+    return (
+        <Box height="50vh" display="flex">
+            <Typography sx={{
+                typography: { xs: "h4", md: "h3" },
+                postion: 'absolute',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                margin: 'auto',
+                textAlign: 'center'
+            }} color="gray">Chua cap nhat hang hoa</Typography>
+        </Box >)
+}
+
 const CategoryPage = () => {
     //State
     const [categories, setCategory] = useState([])
@@ -97,31 +113,35 @@ const CategoryPage = () => {
         updateData()
     }, [])
 
-    return (<Box display="flex" flexDirection="row">
-        {/* Category */}
-        <Box sx={{
-            display: { xs: 'none', md: 'block' }
-        }} marginRight={5}>
-            <Box sx={{ backgroundColor: "green", display: "flex", justifyContent: 'center', padding: 2 }}>
-                <MenuIcon sx={{ mr: 1 }} />
-                <Typography>Danh mục sản phẩm</Typography>
-            </Box>
-            <Dropdown items={categories} />
-        </Box>
-        {/* Main Content */}
-        <Box sx={{
-            width: {
-                xs: '100%',
-                md: '80%'
-            }
-        }}>
-            <Routes>
-                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
-                    <Bottom count={count} onChange={updateData} />
-                } items={products} />}></Route>
-            </Routes>
-        </Box>
-    </Box>)
+    return (
+        (categories === []) ?
+            <Box display="flex" flexDirection="row">
+                {/* Category */}
+                <Box sx={{
+                    display: { xs: 'none', md: 'block' }
+                }} marginRight={5}>
+                    <Box sx={{ backgroundColor: "green", display: "flex", justifyContent: 'center', padding: 2 }}>
+                        <MenuIcon sx={{ mr: 1 }} />
+                        <Typography>Danh mục sản phẩm</Typography>
+                    </Box>
+                    <Dropdown items={categories} />
+                </Box>
+                {/* Main Content */}
+                <Box sx={{
+                    width: {
+                        xs: '100%',
+                        md: '80%'
+                    }
+                }}>
+                    <Routes>
+                        <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
+                            <Bottom count={count} onChange={updateData} />
+                        } items={products} />}></Route>
+                    </Routes>
+                </Box>
+            </Box> :
+            <EmptyPage />
+    )
 }
 
 export default CategoryPage
