@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import { AppBar, Toolbar, Tabs, Tab, Stack, Typography, Skeleton, IconButton, Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -12,6 +15,9 @@ const Navbar = () => {
     const [tabvalue, setTab] = useState('0');
     const [drawer, setDrawer] = useState(false)
     const [categories, setCategory] = useState([])
+
+    const theme = useTheme();
+    const pc = useMediaQuery(theme.breakpoints.up('md'));
 
     const handleTabChange = (event, newValue) => {
         setDrawer(false)
@@ -84,11 +90,11 @@ const Navbar = () => {
                     left: 0,
                     right: 0,
                 }}></Skeleton>
-                <Toolbar sx={{
+                {pc && (<Toolbar sx={{
                     width: 'fit-content',
-                    visibility: {
-                        xs: 'hidden',
-                        md: 'visible',
+                    display: {
+                        xs: 'none',
+                        md: 'block',
                     },
                     position: 'absolute',
                     margin: 'auto',
@@ -106,7 +112,7 @@ const Navbar = () => {
                         )
                         )}
                     </Tabs>
-                </Toolbar>
+                </Toolbar>)}
             </AppBar>
             <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)} sx={{ px: 2 }}>
                 <Dropdown items={tabs} />

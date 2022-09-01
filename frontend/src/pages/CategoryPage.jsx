@@ -114,7 +114,7 @@ const CategoryPage = () => {
     }, [])
 
     return (
-        (categories === []) ?
+        (categories.length > 0) ?
             <Box display="flex" flexDirection="row">
                 {/* Category */}
                 <Box sx={{

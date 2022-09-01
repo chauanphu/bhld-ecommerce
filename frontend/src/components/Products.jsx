@@ -3,8 +3,6 @@ import { Box, Divider, Grid } from '@mui/material'
 import ProductCard from "./Cards/ProductCard"
 
 const Products = ({ header, bottom, items, showHeader }) => {
-
-    // const display = (showHeader) ? 'flex' : 'none'
     return (
         <>
             <Box>
