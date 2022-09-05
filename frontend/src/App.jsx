@@ -6,6 +6,7 @@ import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
 import AdminPage from "./pages/AdminPage";
+
 import "swiper/css/bundle";
 
 const App = () => {
@@ -19,7 +20,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/*" element={<AdminPage />} />
       </Routes>
     </Router>
   );

@@ -1,19 +1,14 @@
-import { Typography, Box } from "@mui/material"
+import { Admin, Resource } from 'react-admin'
+import restProvider from 'ra-data-simple-rest'
 
-const NotFoundPage = () => {
+import { CategoryList, CategoryCreate } from 'components/AdminComponents'
+const url_link = 'http://localhost:8000'
+const AdminPage = () => {
     return (
-        <Box height="50vh" display="flex">
-            <Typography sx={{
-                typography: { xs: "h4", md: "h3" },
-                postion: 'absolute',
-                top: 0,
-                right: 0,
-                bottom: 0,
-                left: 0,
-                margin: 'auto',
-                textAlign: 'center'
-            }} color="gray">Admin</Typography>
-        </Box >)
+        <Admin basename="/admin" dataProvider={restProvider(url_link)}>
+            <Resource name="categories" list={CategoryList} create={CategoryCreate} />
+        </Admin>
+    )
 }
 
-export default NotFoundPage
+export default AdminPage
