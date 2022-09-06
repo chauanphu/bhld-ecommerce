@@ -7,7 +7,8 @@ router.get('/', function (req, res) {
 
 // api/products/:id
 router.get('/:id', function (req, res) {
-    res.json({ id: req.params.id });
+    const id = req.params.id
+    res.json(Product.get_one(id));
 });
 
 module.exports = router;

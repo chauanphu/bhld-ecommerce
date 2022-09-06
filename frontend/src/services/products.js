@@ -29,7 +29,7 @@ var Product = {
      * @param {string} id Id to be searched
      */
     get_by_id: (id) => {
-        return fetch(link_related + '/' + id).then(res => { return res.json() })
+        return fetch(link + '/' + id).then(res => { return res.json() })
     }
 }
 

@@ -16,7 +16,7 @@ const Dropdown = ({ items, isSub = false }) => {
                 return (
                     <Box key={index}>
                         <ListItem sx={{ padding: 0 }}>
-                            <ListItemButton component={Link} to={el.url}>
+                            <ListItemButton component={Link} to={el.url} sx={{ borderBottom: 1 }}>
                                 <ListItemText sx={{ ...el.style }} disableTypography>{el.name}</ListItemText>
                             </ListItemButton>
                             {

@@ -1,6 +1,6 @@
 var _value_ = [
     {
-        id: 1,
+        id: "1",
         name: "#Name1",
         img: "",
         category: "",
@@ -13,6 +13,8 @@ const Products = {
      * Return all categories
      * @returns 
      */
-    get_all: () => [..._value_]
+    get_all: () => [..._value_],
+    get_one: (id) => _value_.find(item => item.id === id),
+    get_related: (id) => []
 }
 module.exports = Products

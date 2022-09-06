@@ -8,9 +8,4 @@ router.get('/', function (req, res) {
     res.json(Category.get_all())
 });
 
-// api/products/:id
-router.get('/:id', function (req, res) {
-    res.json([]);
-});
-
 module.exports = router;

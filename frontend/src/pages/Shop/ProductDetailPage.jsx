@@ -1,5 +1,5 @@
 //////// Import Material Components ////////
-import { Box, Skeleton, Container, Typography, Stack, Rating, Chip, Button } from "@mui/material"
+import { Box, Skeleton, Container, Typography, Stack, Chip, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
 import Carousel from "components/Carousel";
 
@@ -48,20 +48,20 @@ const ProductDetailPage = () => {
                     <Stack>
                         <Typography sx={{ typography: { xs: 'h5', md: 'h4' } }}>{detail.name}</Typography>
                         <Typography sx={{ color: 'green', mt: 2, typography: { xs: 'h6', md: 'h5' } }}>{detail.price}đ</Typography>
-                        <Rating sx={{ mt: 2, fontSize: "20px" }} name="half-rating" defaultValue={4.5} precision={detail.rating} />
-                        <Typography sx={{ mt: 2 }} variant="body1">{detail.description}</Typography>
-                        <Box display="flex" flexDirection="row" alignItems="end">
+                        {/* <Rating sx={{ mt: 2, fontSize: "20px" }} name="half-rating" defaultValue={4.5} precision={detail.rating} /> */}
+                        {detail.description && <Typography sx={{ mt: 2 }} variant="body1">{detail.description}</Typography>}
+                        {detail.sizes && <Box display="flex" flexDirection="row" alignItems="end">
                             <Typography sx={{ mt: 2 }} variant="h6">Size: </Typography>
-                            {detail.sizes && detail.sizes.map(size => <Chip label={size} sx={{ mx: 2 }} />)}
-                        </Box>
-                        <Box display="flex" flexDirection="row" alignItems="end">
+                            {detail.sizes.map(size => <Chip label={size} sx={{ mx: 2 }} />)}
+                        </Box>}
+                        {detail.colors && <Box display="flex" flexDirection="row" alignItems="end">
                             <Typography sx={{ mt: 2 }} variant="h6">Màu: </Typography>
-                            {detail.colors && detail.colors.map(color => <Chip label={color} sx={{ mx: 2 }} />)}
-                        </Box>
-                        <Box display="flex" flexDirection="row" alignItems="end">
+                            {detail.colors.map(color => <Chip label={color} sx={{ mx: 2 }} />)}
+                        </Box>}
+                        {detail.materials && <Box display="flex" flexDirection="row" alignItems="end">
                             <Typography sx={{ mt: 2 }} variant="h6">Chất liệu: </Typography>
                             {detail.materials && detail.sizes.map(material => <Chip label={material} sx={{ mx: 2 }} />)}
-                        </Box>
+                        </Box>}
                         <Box sx={{ mt: 4, mx: { xs: "auto", md: '0' } }}>
                             <Button startIcon={<PhoneIcon />} variant="outlined" sx={{ color: 'green' }}>Lien he ngay</Button>
                         </Box>
