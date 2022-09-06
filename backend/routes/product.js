@@ -1,8 +1,8 @@
 var router = require('express').Router();
-
+var Product = require('../services/products')
 // api/products
 router.get('/', function (req, res) {
-    res.json({ products: [] });
+    res.json(Product.get_all());
 });
 
 // api/products/:id

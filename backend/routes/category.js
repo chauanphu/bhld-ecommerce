@@ -1,8 +1,11 @@
 var router = require('express').Router();
 
+var Category = require('../services/categories')
+var Product = require('../services/products')
+
 // api/products
 router.get('/', function (req, res) {
-    res.json([]);
+    res.json(Category.get_all())
 });
 
 // api/products/:id
