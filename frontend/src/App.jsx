@@ -5,7 +5,7 @@ import ProductDetailPage from './pages/ProductDetailPage'
 import CategoryPage from './pages/CategoryPage'
 import NotFoundPage from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
-import AdminPage from "./pages/AdminPage";
+import AdminPage from "./pages/Admin/AdminPage";
 
 import "swiper/css/bundle";
 
