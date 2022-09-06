@@ -1,6 +1,6 @@
 import { Create, SimpleForm, TextInput } from 'react-admin'
 
-const CategoryCreate = (props) => {
+const ProductCreate = (props) => {
     return <Create>
         <SimpleForm title='Tạo Category' {...props}>
             <TextInput source='name' />
@@ -8,4 +8,4 @@ const CategoryCreate = (props) => {
     </Create>
 }
 
-export default CategoryCreate
+export default ProductCreate

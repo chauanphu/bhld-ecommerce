@@ -1,6 +1,6 @@
 import { Edit, SimpleForm, TextInput, SelectInput, required } from 'react-admin'
 
-const CategoryCreate = (props) => {
+const ProductEdit = (props) => {
     return <Edit>
         <SimpleForm title='Sửa Category' {...props}>
             <TextInput source='name' validate={required()} />
@@ -9,4 +9,4 @@ const CategoryCreate = (props) => {
     </Edit>
 }
 
-export default CategoryCreate
+export default ProductEdit

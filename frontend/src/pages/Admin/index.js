@@ -1,5 +1,5 @@
-export { default as CategoryList } from './CategoryList'
-export { default as CategoryCreate } from './CategoryCreate'
-export { default as CategoryEdit } from './CategoryEdit'
+export { default as ProductList } from './ProductList'
+export { default as ProductCreate } from './ProductCreate'
+export { default as ProductEdit } from './ProductEdit'
 export { default as LoginPage } from './LoginPage'
 export { default as AdminPage } from './AdminPage'
