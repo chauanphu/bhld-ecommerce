@@ -1,11 +1,14 @@
 var _value_ = [
     {
         id: "1",
-        name: "#Name1",
+        name: "Nón bảo hộ nhựa (khóa vặn) N.001",
+        code: "N.001",
         img: "",
-        category: "",
-        price: "289,000"
-    }
+        category: "NÓN BẢO HỘ LAO ĐỘNG",
+        price: "26,000",
+        materials: ['Nhựa'],
+        colors: ['Trắng', 'Cam']
+    },
 ]
 
 const Products = {
