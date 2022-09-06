@@ -1,9 +1,9 @@
 //////// Import Material Components ////////
 import { Box, Skeleton, Container, Typography, Stack, Rating, Chip, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
-import Carousel from "../components/Carousel";
+import Carousel from "components/Carousel";
 
-import Product from "../services/products";
+import Product from "services/products";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 

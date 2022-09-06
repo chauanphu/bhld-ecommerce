@@ -1,12 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import HomePage from "./pages/Home/HomePage";
-import ShopPage from './pages/ShopPage'
-import ProductDetailPage from './pages/ProductDetailPage'
-import CategoryPage from './pages/CategoryPage'
-import NotFoundPage from "./pages/NotFound";
-import LoginPage from "./pages/LoginPage";
-import AdminPage from "./pages/Admin/AdminPage";
-
+import { ShopPage, ProductDetailPage, CategoryPage, NotFoundPage } from 'pages/Shop'
+import { LoginPage, AdminPage } from 'pages/Admin'
 import "swiper/css/bundle";
 
 const App = () => {

@@ -1,24 +1,51 @@
-import { List, Datagrid, TextField, EditButton, DeleteButton } from 'react-admin'
-import { List as MUIList, ListItemText } from '@mui/material'
-import { useRecordContext } from 'react-admin';
+import CircularProgress from '@mui/material/CircularProgress';
+import { Typography } from '@mui/material'
 
-const TagsField = ({ source }) => {
+import { List, Datagrid, TextField, EditButton, DeleteButton } from 'react-admin'
+import { useRecordContext, useGetMany, useGetOne } from 'react-admin';
+
+const ChildrenField = ({ source }) => {
     const record = useRecordContext();
-    return (
-        <MUIList>
-            {record && record[source].map(item => (
-                <ListItemText key={item}>{item}</ListItemText>
-            ))}
-        </MUIList>
+    if (record[source] === '' || !record[source]) return <></>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { data, isLoading, error } = useGetMany(
+        'categories',
+        { id: record[source] },
     );
+    if (isLoading) { return <CircularProgress />; }
+    if (error) { return <p>ERROR</p>; }
+    return (
+        <>
+            {data.map(item => { return <>{item.id}</> })}
+        </>
+        // <MUIList>
+        //     {data && data.map(item => (
+        //         <ListItemText key={item.id}>{item.name}</ListItemText>
+        //     ))}
+        // </MUIList>
+    )
+};
+
+
+const ParentField = ({ source }) => {
+    const record = useRecordContext();
+    if (record[source] === '' || !record[source]) return <></>
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { data, isLoading, error } = useGetOne(
+        'categories',
+        { id: record[source] }
+    );
+    if (isLoading) { return <CircularProgress />; }
+    if (error) { return <p>Không tìm thấy</p>; }
+    return <Typography>{data.name}</Typography>
 };
 
 const CategoryList = (props) => {
     return <List {...props}>
         <Datagrid>
             <TextField label="Tên" source='name' />
-            <TextField label="Mục cha" source='parent' />
-            <TagsField source='children' />
+            <ParentField label="Mục cha" source='parent' />
+            <ChildrenField label="Mục Con" source='children' />
             <EditButton basepath='/category' />
             <DeleteButton basepath='/category' />
         </Datagrid>

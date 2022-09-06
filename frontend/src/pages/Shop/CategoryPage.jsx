@@ -1,6 +1,6 @@
 ///////// Import Custom Components /////////
-import Products from "../components/Products";
-import Dropdown from "../components/Dropdown";
+import Products from "components/Products";
+import Dropdown from "components/Dropdown";
 
 
 ///////// Import Material Components /////////
@@ -17,8 +17,8 @@ import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from "react";
 
 ///////// Import State /////////
-import Category from '../services/category';
-import Product from '../services/products';
+import Category from 'services/category';
+import Product from 'services/products';
 
 const Header = () => {
     return (

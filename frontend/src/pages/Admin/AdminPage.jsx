@@ -3,7 +3,7 @@ import restProvider from 'ra-data-simple-rest'
 
 import { CategoryList, CategoryCreate, CategoryEdit } from './'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
-import LoginPage from "pages/LoginPage";
+import LoginPage from "./LoginPage";
 
 const url_link = 'http://localhost:8000'
 
