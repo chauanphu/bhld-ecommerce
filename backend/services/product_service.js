@@ -2,11 +2,7 @@ const db = require('./firebase')
 
 const Products = {
     _value_: [],
-    /**
-     * Return all categories
-     * @returns 
-     */
-    async get_all() {
+    async _updatedata_() {
         if (this._value_.length == 0) {
             snapshot = await db.collection('products').get();
             snapshot.forEach(async (doc) => {
@@ -16,15 +12,31 @@ const Products = {
                     ...doc.data()
                 }
                 item.category = ref.data().name
+                item.category_id = ref.id
                 this._value_.push(item)
             });
         }
+    },
+    /**
+     * Return all categories
+     * @returns 
+     */
+    async get_all() {
+        await this._updatedata_()
         return {
             length: this._value_.length,
             data: [...this._value_]
         }
     },
     get_one: (id) => _value_.find(item => item.id === id),
+    async get_category(id) {
+        await this._updatedata_()
+        var result = this._value_.filter(item => item.category_id === id)
+        return {
+            length: result.length,
+            data: [...result]
+        }
+    },
     get_related: (id) => []
 }
 module.exports = Products

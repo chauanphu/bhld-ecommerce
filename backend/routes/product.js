@@ -1,8 +1,14 @@
 var router = require('express').Router();
-var Product = require('../services/products')
+var Product = require('../services/product_service')
 // api/products
 router.get('/', async function (req, res) {
-    var { length, data } = await Product.get_all()
+    let category_id = req.query.category
+    if (category_id) {
+        console.log(category_id)
+        var { length, data } = await Product.get_category(category_id)
+    } else {
+        var { length, data } = await Product.get_all()
+    }
     res.setHeader('X-Total-Count', length)
     res.json(data);
 });

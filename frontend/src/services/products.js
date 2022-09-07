@@ -17,6 +17,17 @@ var Product = {
             })
     },
 
+    get_by_category: (category_id) => {
+        console.log('category_id', category_id)
+        return fetch(link + '?category=' + category_id)
+            .then(res => {
+                return {
+                    total_count: res.headers.get('X-Total-Count'),
+                    data: res.json()
+                }
+            })
+    },
+
     /**
      * Return related products
      * @returns {Promise}

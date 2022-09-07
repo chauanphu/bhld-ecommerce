@@ -6,7 +6,6 @@ import Dropdown from "components/Dropdown";
 ///////// Import Material Components /////////
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
-import CircularProgress from '@mui/material/CircularProgress';
 import {
     Box, Button, TextField, Autocomplete,
     Pagination, Typography
@@ -14,8 +13,8 @@ import {
 //
 
 //////////////////// Import React ////////////////////
-import { Routes, Route } from 'react-router-dom'
-import { useState, useEffect } from "react";
+import { Routes, Route, useParams } from 'react-router-dom'
+import { useState, useEffect, useCallback } from "react";
 
 ///////// Import State /////////
 import Category from 'services/category';
@@ -90,18 +89,33 @@ const CategoryPage = () => {
     const [categories, setCategory] = useState([])
     const [products, setProduct] = useState([])
     const [count, setCount] = useState(0)
+    const { id } = useParams()
 
-    const updateData = (event, page) => {
-        Product.get_all(page)
-            .then(res => {
-                const { total_count, data } = res
-                setCount(total_count)
-                return data
-            })
-            .then(data => {
-                setProduct(data)
-            })
-    }
+    const updateData = useCallback((event, page) => {
+        if (id) {
+            Product.get_by_category(id)
+                .then(res => {
+                    const { total_count, data } = res
+                    setCount(total_count)
+                    return data
+                })
+                .then(data => {
+                    setProduct(data)
+                })
+        } else {
+            Product.get_all(page)
+                .then(res => {
+                    const { total_count, data } = res
+                    setCount(total_count)
+                    return data
+                })
+                .then(data => {
+                    console.log(data)
+                    setProduct(data)
+                })
+        }
+    }, [id])
+
     //Effects
     useEffect(() => {
         Category.get_all()
@@ -112,7 +126,7 @@ const CategoryPage = () => {
                 setCategory(data)
             })
         updateData()
-    }, [])
+    }, [updateData])
     return (
         (categories.length > 0) ?
             <Box display="flex" flexDirection="row">
@@ -124,7 +138,7 @@ const CategoryPage = () => {
                         <MenuIcon sx={{ mr: 1 }} />
                         <Typography>Danh mục sản phẩm</Typography>
                     </Box>
-                    <Dropdown items={categories} />
+                    <Dropdown items={categories} baseURL='/category' />
                 </Box>
                 {/* Main Content */}
                 <Box sx={{

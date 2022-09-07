@@ -3,7 +3,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 import { useState } from 'react';
-const Dropdown = ({ items, isSub = false }) => {
+const Dropdown = ({ items, isSub = false, baseURL = '' }) => {
     const [open, setOpen] = useState(false)
     const handleExpand = () => {
         setOpen(!open)
@@ -16,7 +16,7 @@ const Dropdown = ({ items, isSub = false }) => {
                 return (
                     <Box key={index}>
                         <ListItem sx={{ padding: 0 }}>
-                            <ListItemButton component={Link} to={el.url} sx={{ borderBottom: 1 }}>
+                            <ListItemButton component={Link} to={el.url ? el.url : baseURL + '/' + el.id} sx={{ borderBottom: 1 }}>
                                 <ListItemText sx={{ ...el.style }} disableTypography>{el.name}</ListItemText>
                             </ListItemButton>
                             {
