@@ -1,32 +1,29 @@
-var _value_ = [
-    {
-        id: "1",
-        name: "Nón bảo hộ nhựa (khóa vặn) N.001",
-        code: "N.001",
-        img: "",
-        category: "NÓN BẢO HỘ LAO ĐỘNG",
-        price: "26,000",
-        materials: ['Nhựa'],
-        colors: ['Trắng', 'Cam']
-    },
-    {
-        id: "2",
-        name: "Nón bảo hộ nhựa ( khóa cài) N.002",
-        code: "N.002",
-        img: "",
-        category: "NÓN BẢO HỘ LAO ĐỘNG",
-        price: "19,500",
-        materials: ['Nhựa'],
-        colors: ['Trắng', 'Cam']
-    },
-]
+const db = require('./firebase')
 
 const Products = {
+    _value_: [],
     /**
      * Return all categories
      * @returns 
      */
-    get_all: () => [..._value_],
+    async get_all() {
+        if (this._value_.length == 0) {
+            snapshot = await db.collection('products').get();
+            snapshot.forEach(async (doc) => {
+                ref = await doc.data().category.get();
+                var item = {
+                    id: doc.id,
+                    ...doc.data()
+                }
+                item.category = ref.data().name
+                this._value_.push(item)
+            });
+        }
+        return {
+            length: this._value_.length,
+            data: [...this._value_]
+        }
+    },
     get_one: (id) => _value_.find(item => item.id === id),
     get_related: (id) => []
 }

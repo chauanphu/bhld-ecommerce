@@ -112,7 +112,7 @@ const CategoryPage = () => {
             })
         updateData()
     }, [])
-
+    console.log(categories)
     return (
         (categories.length > 0) ?
             <Box display="flex" flexDirection="row">
