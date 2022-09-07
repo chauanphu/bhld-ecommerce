@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardContent, CardActionArea, Box, Typography, Skeleton } from "@mui/material"
+import { Card, CardHeader, CardContent, CardActionArea, Box, Typography } from "@mui/material"
 // import {Rating} from '@mui/material'
 import { Link } from 'react-router-dom'
 
@@ -11,10 +11,11 @@ const ProductCard = ({ item }) => {
                         {item.name}
                     </Typography>
                 } />
-                <Skeleton variant="rectangular" sx={{
+                <Box component="img" src={item.img} alt="San pham" sx={{
                     width: { xs: 200, md: 250 },
                     height: { xs: 200, md: 250 }
-                }}></Skeleton>
+                }} />
+
                 <CardContent>
                     <Box display="flex" alignItems="center" flexDirection='column'>
                         <Typography sx={{

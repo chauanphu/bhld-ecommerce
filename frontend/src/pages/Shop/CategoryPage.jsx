@@ -6,6 +6,7 @@ import Dropdown from "components/Dropdown";
 ///////// Import Material Components /////////
 import MenuIcon from '@mui/icons-material/Menu';
 import SortIcon from '@mui/icons-material/Sort';
+import CircularProgress from '@mui/material/CircularProgress';
 import {
     Box, Button, TextField, Autocomplete,
     Pagination, Typography
@@ -112,7 +113,6 @@ const CategoryPage = () => {
             })
         updateData()
     }, [])
-    console.log(categories)
     return (
         (categories.length > 0) ?
             <Box display="flex" flexDirection="row">
@@ -136,7 +136,8 @@ const CategoryPage = () => {
                     <Routes>
                         <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
                             <Bottom count={count} onChange={updateData} />
-                        } items={products} />}></Route>
+                        } items={products} />}>
+                        </Route>
                     </Routes>
                 </Box>
             </Box> :

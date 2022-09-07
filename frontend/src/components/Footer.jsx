@@ -19,7 +19,7 @@ const Footer = () => {
                 }}>
                     <Typography textAlign="center" sx={{
                         typography: { xs: "h5", md: "h4" }
-                    }}>Công ty TNHH Thương mại Dệt may Trần Gia Phát</Typography>
+                    }}>Công ty TNHH Thương mại BHLĐ Trần Gia Phát</Typography>
                 </Box>
                 <Box sx={{
                     py: 3,
