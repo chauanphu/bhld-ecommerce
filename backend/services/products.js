@@ -9,6 +9,16 @@ var _value_ = [
         materials: ['Nhựa'],
         colors: ['Trắng', 'Cam']
     },
+    {
+        id: "2",
+        name: "Nón bảo hộ nhựa ( khóa cài) N.002",
+        code: "N.002",
+        img: "",
+        category: "NÓN BẢO HỘ LAO ĐỘNG",
+        price: "19,500",
+        materials: ['Nhựa'],
+        colors: ['Trắng', 'Cam']
+    },
 ]
 
 const Products = {
