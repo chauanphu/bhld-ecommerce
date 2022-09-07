@@ -110,7 +110,6 @@ const CategoryPage = () => {
                     return data
                 })
                 .then(data => {
-                    console.log(data)
                     setProduct(data)
                 })
         }

@@ -28,7 +28,10 @@ const Products = {
             data: [...this._value_]
         }
     },
-    get_one: (id) => _value_.find(item => item.id === id),
+    async get_one(id) {
+        await this._updatedata_()
+        return this._value_.find(item => item.id === id)
+    },
     async get_category(id) {
         await this._updatedata_()
         var result = this._value_.filter(item => item.category_id === id)

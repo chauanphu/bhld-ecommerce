@@ -1,5 +1,5 @@
 //////// Import Material Components ////////
-import { Box, Skeleton, Container, Typography, Stack, Chip, Button } from "@mui/material"
+import { Box, Container, Typography, Stack, Chip, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
 import Carousel from "components/Carousel";
 
@@ -39,7 +39,10 @@ const ProductDetailPage = () => {
                 <Box sx={{
                     alignSelf: { xs: 'center', md: 'start' }
                 }}>
-                    <Skeleton variant="rectangular" width={300} height={400}></Skeleton>
+                    <Box component="img" src={detail.img} alt="San pham" sx={{
+                        width: 300,
+                        height: 400
+                    }} />
                 </Box>
                 <Box sx={{
                     mt: { xs: 5, md: 0 },
