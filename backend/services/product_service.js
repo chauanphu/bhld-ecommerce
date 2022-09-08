@@ -18,14 +18,19 @@ const Products = {
         }
     },
     /**
-     * Return all categories
+     * 
+     * @param {string} orderby 
+     * @param {number} page 
+     * @param {number} limit 
      * @returns 
      */
-    async get_all() {
+    async get_all(orderby = 'category', page = 1, limit = 12) {
         await this._updatedata_()
+        let _array_ = [...this._value_]
+        _array_.sort((a, b) => a.category.localeCompare(b.category))
         return {
             length: this._value_.length,
-            data: [...this._value_]
+            data: [..._array_]
         }
     },
     async get_one(id) {

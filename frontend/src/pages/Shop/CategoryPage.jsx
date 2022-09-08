@@ -1,6 +1,5 @@
 ///////// Import Custom Components /////////
-import Products from "components/Products";
-import Dropdown from "components/Dropdown";
+import { Products, Dropdown } from "components";
 
 
 ///////// Import Material Components /////////
@@ -20,7 +19,7 @@ import { useState, useEffect, useCallback } from "react";
 import Category from 'services/category';
 import Product from 'services/products';
 
-const Header = () => {
+const Header = ({ title = 'TRANG CHU' }) => {
     return (
         <Box display="flex" flexDirection="row" marginBottom={1} sx={{ justifyContent: { xs: "space-between", md: 'end' } }} >
             <Button startIcon={<SortIcon />}>
@@ -126,34 +125,37 @@ const CategoryPage = () => {
             })
         updateData()
     }, [updateData])
+    console.log('count', count)
     return (
         (categories.length > 0) ?
-            <Box display="flex" flexDirection="row">
-                {/* Category */}
-                <Box sx={{
-                    display: { xs: 'none', md: 'block' }
-                }} marginRight={5}>
-                    <Box sx={{ backgroundColor: "green", display: "flex", justifyContent: 'center', padding: 2 }}>
-                        <MenuIcon sx={{ mr: 1 }} />
-                        <Typography>Danh mục sản phẩm</Typography>
+            <>
+                <Box display="flex" flexDirection="row">
+                    {/* Category */}
+                    <Box sx={{
+                        display: { xs: 'none', md: 'block' }
+                    }} marginRight={5}>
+                        <Box sx={{ backgroundColor: "green", display: "flex", justifyContent: 'center', padding: 2 }}>
+                            <MenuIcon sx={{ mr: 1 }} />
+                            <Typography>Danh mục sản phẩm</Typography>
+                        </Box>
+                        <Dropdown items={categories} baseURL='/category' />
                     </Box>
-                    <Dropdown items={categories} baseURL='/category' />
+                    {/* Main Content */}
+                    <Box sx={{
+                        width: {
+                            xs: '100%',
+                            md: '80%'
+                        }
+                    }}>
+                        <Routes>
+                            <Route path="/" element={<Products header={<Header />} showHeader={true} bottom={
+                                <Bottom count={count} onChange={updateData} />
+                            } items={products} />}>
+                            </Route>
+                        </Routes>
+                    </Box>
                 </Box>
-                {/* Main Content */}
-                <Box sx={{
-                    width: {
-                        xs: '100%',
-                        md: '80%'
-                    }
-                }}>
-                    <Routes>
-                        <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
-                            <Bottom count={count} onChange={updateData} />
-                        } items={products} />}>
-                        </Route>
-                    </Routes>
-                </Box>
-            </Box> :
+            </> :
             <EmptyPage />
     )
 }

@@ -11,11 +11,12 @@ const Category = {
                     id: doc.id,
                     ...doc.data()
                 }
-                // console.log(this.item)
                 this._value_.push(item)
             });
         }
-        return [...this._value_]
+        let _array_ = [...this._value_]
+        _array_.sort((a, b) => a.name.localeCompare(b.name))
+        return [..._array_]
     }
 }
 module.exports = Category
