@@ -1,12 +1,18 @@
 //////// Import Material Components ////////
-import { Box, Container, Typography, Stack, Chip, Button } from "@mui/material"
+import { Box, Container, Typography, Stack, Button } from "@mui/material"
 import PhoneIcon from '@mui/icons-material/Phone';
+import BuildIcon from '@mui/icons-material/Build';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
+import HeightIcon from '@mui/icons-material/Height';
+import ScienceIcon from '@mui/icons-material/Science';
+
 import Carousel from "components/Carousel";
 
 import Product from "services/products";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Title } from "components";
+import { Title, ZaloIcon } from "components";
+
 
 const ProductDetailPage = () => {
     const [detail, setDetail] = useState({})
@@ -27,8 +33,10 @@ const ProductDetailPage = () => {
                     alignSelf: { xs: 'center', md: 'start' }
                 }}>
                     <Box component="img" src={detail.img} alt="San pham" sx={{
-                        width: 300,
-                        height: 400
+                        maxWidth: 400,
+                        maxHeight: 400,
+                        width: 'auto',
+                        height: 'auto',
                     }} />
                 </Box>
                 <Box sx={{
@@ -37,24 +45,39 @@ const ProductDetailPage = () => {
                 }}>
                     <Stack>
                         <Typography sx={{ typography: { xs: 'h5', md: 'h4' } }}>{detail.name}</Typography>
-                        <Typography sx={{ mt: 2, typography: { xs: 'h6', md: 'h5' } }}>Mã sản phẩm: {detail.code}</Typography>
-                        <Typography sx={{ color: 'green', mt: 2, typography: { xs: 'h6', md: 'h5' } }}>{detail.price}đ</Typography>
+                        <Typography sx={{ mt: 2, typography: { xs: 'h7', md: 'h6' } }}>Mã sản phẩm: {detail.code}</Typography>
+                        <Typography sx={{ color: 'green', mt: 2, typography: { xs: 'h6', md: 'h5' } }}>Giá: {detail.price ? detail.price + 'đ' : 'Xin liên hệ'}</Typography>
                         {/* <Rating sx={{ mt: 2, fontSize: "20px" }} name="half-rating" defaultValue={4.5} precision={detail.rating} /> */}
                         {detail.description && <Typography sx={{ mt: 2 }} variant="body1">{detail.description}</Typography>}
-                        {detail.sizes && <Box display="flex" flexDirection="row" alignItems="end">
-                            <Typography sx={{ mt: 2 }} variant="h6">Size: </Typography>
-                            {detail.sizes.map(size => <Chip key={size} label={size} sx={{ mx: 1 }} />)}
+                        {detail.utils && <Box display="flex" flexDirection="row" alignItems="center" sx={{ mt: 2 }}>
+                            <BuildIcon sx={{ mr: 1 }}></BuildIcon>
+                            <Typography fontWeight='bold' sx={{ typography: { xs: 'h7', md: 'h6' } }}>Công dụng: </Typography>
+                            <Typography sx={{ mx: 1, typography: { xs: 'h7', md: 'h6' } }}>{detail.utils}</Typography>
                         </Box>}
-                        {detail.colors && <Box display="flex" flexDirection="row" alignItems="end">
-                            <Typography sx={{ mt: 2 }} variant="h6">Màu: </Typography>
-                            {detail.colors.map(color => <Chip key={color} label={color} sx={{ mx: 1 }} />)}
+                        {detail.sizes && <Box display="flex" flexDirection="row" alignItems="center" sx={{ mt: 2 }}>
+                            <HeightIcon sx={{ mr: 1 }} />
+                            <Typography fontWeight='bold' sx={{ typography: { xs: 'h7', md: 'h6' } }}>Size: </Typography>
+                            <Typography sx={{ mx: 1, typography: { xs: 'h7', md: 'h6' } }}>{detail.sizes}</Typography>
                         </Box>}
-                        {detail.materials && <Box display="flex" flexDirection="row" alignItems="end">
-                            <Typography sx={{ mt: 2 }} variant="h6">Chất liệu: </Typography>
-                            {detail.materials.map(material => <Chip key={material} label={material} sx={{ mx: 1 }} />)}
+                        {detail.colors && <Box display="flex" flexDirection="row" alignItems="center" sx={{ mt: 2 }}>
+                            <ColorLensIcon sx={{ mr: 1 }} />
+                            <Typography fontWeight='bold' sx={{ typography: { xs: 'h7', md: 'h6' } }}>Màu: </Typography>
+                            <Typography sx={{ mx: 1, typography: { xs: 'h7', md: 'h6' } }}>{detail.colors}</Typography>
+                        </Box>}
+                        {detail.materials && <Box display="flex" flexDirection="row" alignItems="center" sx={{ mt: 2 }}>
+                            <ScienceIcon sx={{ mr: 1 }} />
+                            <Typography fontWeight='bold' sx={{ typography: { xs: 'h7', md: 'h6' } }}>Chất liệu: </Typography>
+                            <Typography sx={{ mx: 1, typography: { xs: 'h7', md: 'h6' } }}>{detail.materials}</Typography>
                         </Box>}
                         <Box sx={{ mt: 4, mx: { xs: "auto", md: '0' } }}>
-                            <Button startIcon={<PhoneIcon />} variant="outlined" sx={{ color: 'green' }}>Lien he ngay</Button>
+                            <Button startIcon={<PhoneIcon />} variant="outlined" sx={{ color: 'green' }} component='a' href='tel:0945316280'>
+                                Điện thoại
+                            </Button>
+                            <Button startIcon={<ZaloIcon />} variant="outlined" sx={{ color: 'blue', ml: 1 }} component='a' onClick={() => {
+                                window.open("https://zalo.me/0945316280")
+                            }}>
+                                Zalo
+                            </Button>
                         </Box>
                     </Stack>
                 </Box>

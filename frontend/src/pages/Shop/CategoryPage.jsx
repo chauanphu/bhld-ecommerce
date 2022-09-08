@@ -148,7 +148,7 @@ const CategoryPage = () => {
                         }
                     }}>
                         <Routes>
-                            <Route path="/" element={<Products header={<Header />} showHeader={true} bottom={
+                            <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
                                 <Bottom count={count} onChange={updateData} />
                             } items={products} />}>
                             </Route>

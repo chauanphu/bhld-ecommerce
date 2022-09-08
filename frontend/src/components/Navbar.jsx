@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { AppBar, Toolbar, Tabs, Tab, Stack, Typography, Skeleton, IconButton, Drawer } from "@mui/material";
+import { AppBar, Toolbar, Tabs, Tab, Stack, Typography, Box, IconButton, Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -10,6 +10,7 @@ import Dropdown from './Dropdown';
 //Import State
 import Category from '../services/category'
 import { useEffect } from 'react';
+import logo from 'assets/logo.png'
 
 const Navbar = () => {
     const [tabvalue, setTab] = useState('0');
@@ -68,7 +69,7 @@ const Navbar = () => {
             </AppBar>
             {/* Navbar */}
             <AppBar sx={{
-                height: "80px",
+                height: 100,
                 backgroundColor: 'white',
                 position: 'relative',
                 display: 'flex',
@@ -81,15 +82,14 @@ const Navbar = () => {
                 }}>
                     <MenuIcon />
                 </IconButton>
-                <Skeleton sx={{
+                <Box component="img" src={logo} alt="Logo" sx={{
                     width: 100,
-                    height: 70,
-                    position: { xs: 'absolute', md: 'block' },
-                    margin: { xs: 'auto', md: '0 0 0 50px' },
-                    ml: 5,
+                    height: 100,
+                    position: { xs: 'absolute', xl: 'block' },
+                    margin: { xs: 'auto', xl: '0 0 0 50px' },
                     left: 0,
                     right: 0,
-                }}></Skeleton>
+                }} />
                 {pc && (<Toolbar sx={{
                     width: 'fit-content',
                     display: {

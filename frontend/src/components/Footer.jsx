@@ -4,6 +4,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import {
     green, grey, blueGrey
 } from "@mui/material/colors"
+import ZaloIcon from "./Icons/Zalo";
 
 const Footer = () => {
     return (
@@ -40,7 +41,7 @@ const Footer = () => {
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem>
-                                        <ListItemIcon sx={{ color: "white" }}><PhoneIcon /></ListItemIcon>
+                                        <ListItemIcon sx={{ color: "white" }}><ZaloIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
                                             0945 316 280
                                         </ListItemText>
