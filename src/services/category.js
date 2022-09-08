@@ -1,4 +1,4 @@
-const link = "http://localhost:4000/api/categories"
+const link = process.env.REACT_APP_API + "/categories"
 
 var category = {
     get_all: () => {

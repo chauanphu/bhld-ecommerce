@@ -1,7 +1,7 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import { Typography } from '@mui/material'
 
-import { List, Datagrid, TextField, EditButton, DeleteButton, NumberField, ImageField } from 'react-admin'
+import { List, Datagrid, TextField, EditButton, DeleteButton, NumberField } from 'react-admin'
 import { useRecordContext, useGetOne } from 'react-admin';
 
 

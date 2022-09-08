@@ -1,5 +1,4 @@
-const link = "http://localhost:4000/api/products"
-
+const link = process.env.REACT_APP_API + "/products"
 var Product = {
     /**
      * Get all products

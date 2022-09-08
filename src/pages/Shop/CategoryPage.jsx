@@ -125,7 +125,6 @@ const CategoryPage = () => {
             })
         updateData()
     }, [updateData])
-    console.log('count', count)
     return (
         (categories.length > 0) ?
             <>
