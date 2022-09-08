@@ -3,7 +3,7 @@ import { Box, Typography } from '@mui/material'
 import { orange } from '@mui/material/colors';
 import customer_divider from './divider.svg'
 
-const Title = ({ id, title }) => {
+const Title = ({ id, title, backgroundColor = orange[50] }) => {
     return (
         <>
             <Box id={id} sx={{
@@ -13,7 +13,7 @@ const Title = ({ id, title }) => {
                 justifyContent: "center",
                 mb: 3,
                 py: 5,
-                backgroundColor: orange[50],
+                backgroundColor: backgroundColor,
             }}>
                 <Typography variant="h5" fontWeight="bold" fontFamily="Roboto">{title}</Typography>
                 <Box component="img" src={customer_divider} width="100%" maxWidth={500} marginTop={1}></Box>

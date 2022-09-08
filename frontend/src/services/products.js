@@ -1,5 +1,4 @@
 const link = "http://localhost:4000/api/products"
-const link_related = "http://localhost:4000/related_products"
 
 var Product = {
     /**
@@ -28,13 +27,6 @@ var Product = {
             })
     },
 
-    /**
-     * Return related products
-     * @returns {Promise}
-     */
-    get_related: () => {
-        return fetch(link_related).then(res => { return res.json() })
-    },
     /**
      * Return detailed data of a product
      * @param {string} id Id to be searched

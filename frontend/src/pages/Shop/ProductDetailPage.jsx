@@ -6,27 +6,14 @@ import Carousel from "components/Carousel";
 import Product from "services/products";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Title } from "components";
 
-const Header = () => {
-    return (<Box sx={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        mt: 5,
-        mb: 2,
-        py: 5,
-    }}>
-        <Typography variant="h4">Sản phẩm liên quan</Typography>
-    </Box>)
-}
 const ProductDetailPage = () => {
-    const [related_products, setRelated] = useState([])
     const [detail, setDetail] = useState({})
 
     const { id } = useParams()
 
     useEffect(() => {
-        Product.get_related().then(data => setRelated(data))
         Product.get_by_id(id).then(data => setDetail(data))
     }, [id])
 
@@ -72,10 +59,10 @@ const ProductDetailPage = () => {
                     </Stack>
                 </Box>
             </Box>
-            <Box>
-                <Header />
-                <Carousel items={related_products}></Carousel>
-            </Box>
+            {detail.related_products && <>
+                <Title title='SẢN PHẨM LIÊN QUAN' backgroundColor='white' />
+                <Carousel items={detail.related_products}></Carousel>
+            </>}
         </Container>
     </>)
 }

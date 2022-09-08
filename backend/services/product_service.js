@@ -39,7 +39,7 @@ const Products = {
     },
     async get_category(id) {
         await this._updatedata_()
-        var result = this._value_.filter(item => item.category_id === id)
+        let result = this._value_.filter(item => item.category_id === id)
         return {
             length: result.length,
             data: [...result]
