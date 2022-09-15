@@ -82,14 +82,15 @@ const Navbar = () => {
                 }}>
                     <MenuIcon />
                 </IconButton>
+                <a href="/">
                 <Box component="img" src={logo} alt="Logo" sx={{
                     width: 100,
                     height: 100,
                     position: { xs: 'absolute', xl: 'block' },
-                    margin: { xs: 'auto', xl: '0 0 0 50px' },
+                    margin: { xs: 'auto', xl: '-50px 0 0 50px' },
                     left: 0,
                     right: 0,
-                }} />
+                }} /></a>
                 {pc && (<Toolbar sx={{
                     width: 'fit-content',
                     display: {
