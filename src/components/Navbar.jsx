@@ -82,12 +82,11 @@ const Navbar = () => {
                 }}>
                     <MenuIcon />
                 </IconButton>
-                <a href="/">
-                <Box component="img" src={logo} alt="Logo" sx={{
+                <a href={tabs[0].url}><Box component="img" src={logo} alt="Logo" sx={{
                     width: 100,
                     height: 100,
                     position: { xs: 'absolute', xl: 'block' },
-                    margin: { xs: 'auto', xl: '-50px 0 0 50px' },
+                    margin: { xs: '-50px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-50px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
                     left: 0,
                     right: 0,
                 }} /></a>
