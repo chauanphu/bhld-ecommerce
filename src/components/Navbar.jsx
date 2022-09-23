@@ -44,11 +44,11 @@ const Navbar = () => {
     }, [])
     const tabs = [
         {
-            name: 'San pham', url: '/', value: '0', style: style, sub_items: categories
+            name: 'SẢN PHẨM', url: '/', value: '0', style: style, sub_items: categories
         },
         // { label: 'San pham', url: '/products', value: '1' },
         {
-            name: 'Lien lac', url: '/contact', value: '1', style: style
+            name: 'LIÊN HỆ', url: '/contact', value: '1', style: style
         },
     ]
     return (

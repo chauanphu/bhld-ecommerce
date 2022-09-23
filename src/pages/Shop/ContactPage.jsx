@@ -27,14 +27,14 @@ const ContactPage = () => {
                 <Button startIcon={<PhoneIcon />} sx={{
                     fontSize: 18, fontWeight: 'bold', backgroundColor: 'red', py: 1.5, color: 'white', borderColor: "red", borderRadius: 7
                 }} component='a' href='tel:0945316280'>
-                    Điện thoại
+                    0945 316 280
                 </Button>
                 <Button startIcon={<ZaloIcon />} sx={{
                     fontSize: 18, fontWeight: 'bold', backgroundColor: 'purple', py: 1.5, color: 'white', borderColor: "purple", borderRadius: 7, mt: 2
                 }} component='a' onClick={() => {
                     window.open("https://zalo.me/0945316280")
                 }}>
-                    Zalo
+                    0945 316 280
                 </Button>
             </Box>
         </Box >)

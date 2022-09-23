@@ -8,7 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import { useState } from "react"
 
 const SERVICE_ID = "service_uq2oteh"
-const TEMPLATE_ID = "template_5uj1vsq"
+const TEMPLATE_ID = "template_l5xq3un"
 const PUBLIC_KEY = 'jLgP61qPVm5XZ6mpz'
 
 /**
@@ -25,7 +25,6 @@ const Form = () => {
         e.preventDefault();
 
         var templateParams = {
-            project: 'MTEastmark City Q.9',
             content: content,
             phone: phone,
             name: name,
