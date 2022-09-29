@@ -1,8 +1,10 @@
+import Section from './Section'
+
 const HomePage = () => {
     return (
-        <>
+        <Section>
 
-        </>
+        </Section>
     )
 }
 
