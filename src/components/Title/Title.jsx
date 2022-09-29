@@ -11,7 +11,6 @@ const Title = ({ id, title, backgroundColor = orange[50] }) => {
                 flexDirection: 'column',
                 alignItems: "center",
                 justifyContent: "center",
-                mb: 3,
                 py: 5,
                 backgroundColor: backgroundColor,
             }}>
