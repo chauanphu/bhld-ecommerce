@@ -12,6 +12,9 @@ import Category from '../services/category'
 import { useEffect } from 'react';
 import logo from 'assets/logo.png'
 
+const DropdownMenu = () => {
+
+}
 const Navbar = () => {
     const [tabvalue, setTab] = useState('0');
     const [drawer, setDrawer] = useState(false)
@@ -86,8 +89,8 @@ const Navbar = () => {
                     <MenuIcon />
                 </IconButton>
                 <a href={tabs[0].url}><Box component="img" src={logo} alt="Logo" sx={{
-                    width: 100,
-                    height: 100,
+                    width: 69,
+                    height: 69,
                     position: { xs: 'absolute', xl: 'block' },
                     margin: { xs: '-50px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-50px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
                     left: 0,
