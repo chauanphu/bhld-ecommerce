@@ -18,9 +18,10 @@ import './index.sass'
 
 const DropdownMenu = ({ items = [] }) => {
     return (
-        <Box container className="dropdown-content">
-            {items.map(el =>
-                <Button key={el.normed_name} className='category' component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
+        <Box className="dropdown-content">
+            {items.map(el => <Box className='category'>
+                <Button key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
+            </Box>
             )}
         </Box>
     )
@@ -52,7 +53,7 @@ const Navbar = () => {
     }, [])
     const tabs = [
         {
-            name: 'TRANG CHỦ', url: '/', value: '0', style: style, sub_items: categories
+            name: 'TRANG CHỦ', url: '/', value: '0', style: style
         },
         {
             name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories
@@ -120,7 +121,11 @@ const Navbar = () => {
                     <Button className='link' component={Link} to={tabs[2].url}>{tabs[2].name}</Button>
                 </Toolbar>)}
             </AppBar>
+            {/* Drawer */}
             <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)} sx={{ px: 2 }}>
+                <Typography variant='h6' fontWeight='bold' textAlign='center' color='white' sx={{ width: '100%', height: '40px', backgroundColor: 'green' }}>
+                    DANH MỤC
+                </Typography>
                 <Dropdown items={tabs} />
             </Drawer>
         </>
