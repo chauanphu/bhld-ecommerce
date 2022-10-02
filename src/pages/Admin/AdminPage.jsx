@@ -5,7 +5,7 @@ import { ProductList, ProductCreate, ProductEdit } from './'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import LoginPage from "./LoginPage";
 
-const url_link = 'http://localhost:8000'
+const url_link = 'http://localhost:8000/api'
 
 const AdminPage = () => {
     return (
