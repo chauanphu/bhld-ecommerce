@@ -73,10 +73,7 @@ const dataProvider = {
     },
 
     create: (resource, params) =>
-        axios(`${apiUrl}/${resource}`, {
-            method: 'POST',
-            data: JSON.stringify(params.data),
-        }).then(({ data }) => ({
+        axios.post(`${apiUrl}/${resource}`, params.data).then(({ data }) => ({
             data: { ...params.data, id: data._id },
         })),
 

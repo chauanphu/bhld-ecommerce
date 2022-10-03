@@ -98,7 +98,7 @@ const Navbar = () => {
                     width: 69,
                     height: 69,
                     position: { xs: 'absolute', xl: 'block' },
-                    margin: { xs: '-50px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-50px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
+                    margin: { xs: '-35px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-35px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
                     left: 0,
                     right: 0,
                 }} /></a>
