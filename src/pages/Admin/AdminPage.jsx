@@ -56,28 +56,25 @@ const dataProvider = {
         }));
     },
 
-    update: (resource, params) =>
-        axios(`${apiUrl}/${resource}/${params.id}`, {
-            method: 'PUT',
-            body: JSON.stringify(params.data),
-        }).then(({ data }) => ({
+    update: (resource, params) => {
+        delete params.data._id
+        return axios.put(`${apiUrl}/${resource}/${params.id}`, params.data).then(({ data }) => ({
             data: { ...data, id: data._id },
-        })),
+        }))
+    },
 
     updateMany: (resource, params) => {
+        delete params.data._id
         const query = {
-            filter: JSON.stringify({ id: params.ids }),
+            filter: JSON.stringify({ id: params.data.ids }),
         };
-        return axios(`${apiUrl}/${resource}?${JSON.stringify(query)}`, {
-            method: 'PUT',
-            body: JSON.stringify(params.data),
-        }).then(({ data }) => ({ data: data }));
+        return axios.put(`${apiUrl}/${resource}?${JSON.stringify(query)}`, params.data).then(({ data }) => ({ data: data }));
     },
 
     create: (resource, params) =>
         axios(`${apiUrl}/${resource}`, {
             method: 'POST',
-            body: JSON.stringify(params.data),
+            data: JSON.stringify(params.data),
         }).then(({ data }) => ({
             data: { ...params.data, id: data._id },
         })),
