@@ -24,11 +24,13 @@
         .category
             display: flex
             flex-direction: column
-            text-align: center
-            width: fit-content
+            min-width: fit-content
             margin-right: 1em
             .MuiButton-root
                 color: white
+            .parent
+                .children
+                    background-color: red
     &:hover
         .dropdown-content
             display: flex

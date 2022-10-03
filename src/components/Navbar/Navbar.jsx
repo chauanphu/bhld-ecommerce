@@ -19,9 +19,14 @@ import './index.sass'
 const DropdownMenu = ({ items = [] }) => {
     return (
         <Box className="dropdown-content">
-            {items.map(el => <Box className='category'>
-                <Button key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
-            </Box>
+            {items.map(el => (
+                <Box className='category'>
+                    <Button sx={{ fontWeight: 'bold' }} key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
+                    {el.sub_items && el.sub_items.map(sub_el =>
+                        <Button sx={{ fontSize: '12px' }} key={sub_el.normed_name} component={Link} to={'categories/' + sub_el.normed_name}>
+                            {sub_el.name}
+                        </Button>)}
+                </Box>)
             )}
         </Box>
     )
@@ -56,7 +61,7 @@ const Navbar = () => {
             name: 'TRANG CHỦ', url: '/', value: '0', style: style
         },
         {
-            name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories
+            name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories, baseUrl: '/categories/'
         },
         // { label: 'San pham', url: '/products', value: '1' },
         {
