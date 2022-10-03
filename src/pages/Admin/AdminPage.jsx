@@ -1,6 +1,7 @@
 import { Admin, Resource } from 'react-admin'
-import { ProductList, ProductCreate, ProductEdit } from './'
+import { ProductList, ProductCreate, ProductEdit, CategoryList, CategoryEdit, CategoryCreate } from './'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import ArticleIcon from '@mui/icons-material/Article';
 import LoginPage from "./LoginPage";
 import axios from 'axios'
 
@@ -101,6 +102,7 @@ const AdminPage = () => {
     return (
         <Admin loginPage={LoginPage} basename="/admin" dataProvider={dataProvider}>
             <Resource icon={ShoppingBasketIcon} name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} />
+            <Resource icon={ArticleIcon} name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit} />
         </Admin>
     )
 }
