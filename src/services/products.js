@@ -1,3 +1,5 @@
+import axios from "axios"
+
 const link = process.env.REACT_APP_API + "/products"
 var Product = {
     /**
@@ -6,22 +8,29 @@ var Product = {
      * @returns {Promise<{total_count: number, data: Promise<Array>}>} data
      */
     get_all: (page) => {
-        return fetch(link + '?_page=' + page + '&_limit=12')
-            .then(res => {
+        return axios.get(link, {
+            params: {
+                _page: page,
+                _limit: 12
+            }
+        })
+            .then(({ headers, data }) => {
                 return {
-                    total_count: res.headers.get('X-Total-Count'),
-                    data: res.json()
+                    total_count: headers['X-Total-Count'],
+                    data: data
                 }
             })
     },
 
-    get_by_category: (category_id) => {
-        console.log('category_id', category_id)
-        return fetch(link + '?category=' + category_id)
-            .then(res => {
+    get_by_category: (category_path) => {
+        let data = { category_path: category_path }
+        return axios.get(link, {
+            params: data
+        })
+            .then(({ headers, data }) => {
                 return {
-                    total_count: res.headers.get('X-Total-Count'),
-                    data: res.json()
+                    total_count: headers['X-Total-Count'],
+                    data: data
                 }
             })
     },

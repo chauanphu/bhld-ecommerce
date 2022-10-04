@@ -3,7 +3,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 
 import { useState } from 'react';
-const Dropdown = ({ items, isSub = false, baseURL = '' }) => {
+import { grey } from '@mui/material/colors'
+
+const Dropdown = ({ items, isSub = false }) => {
     const [open, setOpen] = useState(false)
     const handleExpand = () => {
         setOpen(!open)
@@ -16,16 +18,16 @@ const Dropdown = ({ items, isSub = false, baseURL = '' }) => {
                 return (
                     <Box key={index}>
                         <ListItem sx={{ padding: 0 }}>
-                            <ListItemButton component={Link} to={el.url ? el.url : baseURL + '/' + el.id} sx={{ borderBottom: 1 }}>
+                            <ListItemButton component={Link} to={el.url ? el.url : el.baseUrl + el.id}>
                                 <ListItemText sx={{ ...el.style }} disableTypography>{el.name}</ListItemText>
                             </ListItemButton>
                             {
                                 (el.sub_items && el.sub_items.length > 0) ?
                                     (!open ?
-                                        (<IconButton edge="end" onClick={handleExpand} sx={{ mr: 1 }}>
+                                        (<IconButton edge="end" onClick={handleExpand} sx={{ mr: 1, backgroundColor: grey[200] }}>
                                             <ExpandMoreIcon />
                                         </IconButton>) :
-                                        (<IconButton edge="end" onClick={handleExpand} sx={{ mr: 1 }}>
+                                        (<IconButton edge="end" onClick={handleExpand} sx={{ mr: 1, backgroundColor: grey[200] }}>
                                             <ExpandLessIcon />
                                         </IconButton>)
                                     )

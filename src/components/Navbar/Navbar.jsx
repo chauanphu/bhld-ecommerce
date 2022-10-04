@@ -2,28 +2,42 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { AppBar, Toolbar, Tabs, Tab, Stack, Typography, Box, IconButton, Drawer } from "@mui/material";
+import { AppBar, Toolbar, Button, Stack, Typography, Box, IconButton, Drawer } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
-import Dropdown from './Dropdown';
+import Dropdown from '../Dropdown';
+
 //Import State
-import Category from '../services/category'
+import Category from '../../services/category'
 import { useEffect } from 'react';
 import logo from 'assets/logo.png'
 
+// Import style
+import './index.sass'
+
+const DropdownMenu = ({ items = [] }) => {
+    return (
+        <Box className="dropdown-content">
+            {items.map(el => (
+                <Box key={el.normed_name} className='category'>
+                    <Button sx={{ fontWeight: 'bold' }} key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
+                    {el.sub_items && el.sub_items.map(sub_el =>
+                        <Button sx={{ fontSize: '12px' }} key={sub_el.normed_name} component={Link} to={'categories/' + sub_el.normed_name}>
+                            {sub_el.name}
+                        </Button>)}
+                </Box>)
+            )}
+        </Box>
+    )
+}
 const Navbar = () => {
-    const [tabvalue, setTab] = useState('0');
     const [drawer, setDrawer] = useState(false)
     const [categories, setCategory] = useState([])
 
     const theme = useTheme();
     const pc = useMediaQuery(theme.breakpoints.up('md'));
 
-    const handleTabChange = (event, newValue) => {
-        setDrawer(false)
-        setTab(newValue)
-    };
     const toggleDrawer = (event, newValue) => {
         setDrawer(newValue)
     }
@@ -44,11 +58,14 @@ const Navbar = () => {
     }, [])
     const tabs = [
         {
-            name: 'SẢN PHẨM', url: '/', value: '0', style: style, sub_items: categories
+            name: 'TRANG CHỦ', url: '/', value: '0', style: style
+        },
+        {
+            name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories, baseUrl: '/categories/'
         },
         // { label: 'San pham', url: '/products', value: '1' },
         {
-            name: 'LIÊN HỆ', url: '/contact', value: '1', style: style
+            name: 'LIÊN HỆ', url: '/contact', value: '2', style: style
         },
     ]
     return (
@@ -73,7 +90,7 @@ const Navbar = () => {
                 backgroundColor: 'white',
                 position: 'relative',
                 display: 'flex',
-                justifyContent: 'center'
+                justifyContent: 'center',
             }}>
                 {/* Logo */}
                 <IconButton size="large" onClick={event => toggleDrawer(event, true)} sx={{
@@ -83,10 +100,10 @@ const Navbar = () => {
                     <MenuIcon />
                 </IconButton>
                 <a href={tabs[0].url}><Box component="img" src={logo} alt="Logo" sx={{
-                    width: 100,
-                    height: 100,
+                    width: 69,
+                    height: 69,
                     position: { xs: 'absolute', xl: 'block' },
-                    margin: { xs: '-50px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-50px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
+                    margin: { xs: '-35px auto auto auto', /*xl: '-50px 0 0 50px',*/ md: '-35px 0 0 50px' }, /*I don't see effect of xl on pc nor mobile*/
                     left: 0,
                     right: 0,
                 }} /></a>
@@ -94,27 +111,26 @@ const Navbar = () => {
                     width: 'fit-content',
                     display: {
                         xs: 'none',
-                        md: 'block',
+                        md: 'flex',
                     },
                     position: 'absolute',
                     margin: 'auto',
                     left: 0,
                     right: 0,
                 }}>
-                    <Tabs value={tabvalue} onChange={handleTabChange}>
-                        {tabs.map((tab) => (
-                            <Tab key={tab.value} component={Link} to={tab.url} label={tab.name} value={tab.value} sx={{
-                                typography: {
-                                    md: 'h6'
-                                },
-                                color: 'green'
-                            }} />
-                        )
-                        )}
-                    </Tabs>
+                    <Button className='link' component={Link} to={tabs[0].url}>{tabs[0].name}</Button>
+                    <Box className='dropdown'>
+                        <Button className='link' component={Link} to={tabs[1].url}>{tabs[1].name}</Button>
+                        <DropdownMenu className='dropdown-content' items={categories}></DropdownMenu>
+                    </Box>
+                    <Button className='link' component={Link} to={tabs[2].url}>{tabs[2].name}</Button>
                 </Toolbar>)}
             </AppBar>
+            {/* Drawer */}
             <Drawer anchor='left' open={drawer} onClose={event => toggleDrawer(event, false)} sx={{ px: 2 }}>
+                <Typography variant='h6' fontWeight='bold' textAlign='center' color='white' sx={{ width: '100%', height: '40px', backgroundColor: 'green' }}>
+                    DANH MỤC
+                </Typography>
                 <Dropdown items={tabs} />
             </Drawer>
         </>

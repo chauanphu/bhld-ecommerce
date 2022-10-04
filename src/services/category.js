@@ -6,4 +6,4 @@ var category = {
     },
 }
 
-export default category
+export default category 

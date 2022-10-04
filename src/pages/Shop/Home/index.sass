@@ -1,0 +1,68 @@
+// Khai báo kích thước tương ứng với màn hình thiết bị
+
+$XS: 480px
+$SM: 768px
+$MD: 1024px
+$XL: 1170px
+
+// media queries
+
+@mixin Responsive($canvas)
+    @if $canvas == XS
+        @media only screen and (min-width: $XS)
+            @content
+
+    @else if $canvas == SM
+        @media only screen and (min-width: $SM)
+            @content
+
+    @else if $canvas == MD
+        @media only screen and (min-width: $MD)
+            @content
+
+    @else if $canvas == XL
+        @media only screen and (min-width: $XL)
+            @content
+
+.section
+    height: 70vh
+    width: 100%
+    padding-top: 2em
+    padding-bottom: 2em
+    .container
+        max-width: $XL
+        margin-left: auto
+        margin-right: auto
+
+.section-auto
+    @extend .section
+    height: auto
+    .product-header
+        font-size: 20px
+
+.section-screen
+    height: 70vh
+    width: 100%
+    .img-panel
+        object-fit: cover
+        width: 100%
+        height: 100%
+#hero
+    .item
+        width: 15%
+        display: flex
+        flex-direction: column
+        align-items: center
+        margin-left: 1em
+        margin-right: 1em
+        padding-left: 1em
+        padding-right: 1em
+        border: 1px solid #cacacaf2
+        border-radius: 1em
+        .MuiIcon-fontSizeLarge
+            font-size: 20px
+        .MuiTypography-body1
+            font-size: 20px
+            text-align: center
+
+#product-category
