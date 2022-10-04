@@ -5,7 +5,7 @@ const CategoryList = (props) => {
         <Datagrid>
             <TextField label="Tên" source='name' />
             <TextField label="Tên rút gọn" source='normed_name' />
-            <ArrayField source="sub_items">
+            <ArrayField label='Danh mục con' source="sub_items">
                 <SingleFieldList>
                     <ChipField source='name' />
                 </SingleFieldList>

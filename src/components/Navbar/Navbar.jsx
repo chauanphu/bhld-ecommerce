@@ -20,7 +20,7 @@ const DropdownMenu = ({ items = [] }) => {
     return (
         <Box className="dropdown-content">
             {items.map(el => (
-                <Box className='category'>
+                <Box key={el.normed_name} className='category'>
                     <Button sx={{ fontWeight: 'bold' }} key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
                     {el.sub_items && el.sub_items.map(sub_el =>
                         <Button sx={{ fontSize: '12px' }} key={sub_el.normed_name} component={Link} to={'categories/' + sub_el.normed_name}>

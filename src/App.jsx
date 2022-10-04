@@ -11,7 +11,7 @@ const App = () => {
         <Route exact path="/" element={<ShopPage />}>
           <Route path="/" element={<HomePage />} />
           <Route path='/contact' element={<ContactPage />} />
-          <Route path="/category/:id" element={<CategoryPage />} />
+          <Route path="/categories/:id/*" element={<CategoryPage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

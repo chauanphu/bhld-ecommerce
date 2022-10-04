@@ -9,9 +9,9 @@ const Products = ({ header, bottom, items, showHeader }) => {
                 {showHeader && header}
                 {showHeader && <Divider sx={{ my: 3 }} />}
                 <Grid container spacing={2} columns={{ xs: 2, md: 3, lg: 4 }} justifyContent={{ xs: "center", md: "evenly" }}>
-                    {items.map((item) => {
+                    {items.map((item, index) => {
                         return (
-                            <ProductCard key={item.id} item={item}></ProductCard>
+                            <ProductCard key={index} item={item}></ProductCard>
                         )
                     })}
                 </Grid>
