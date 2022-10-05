@@ -8,8 +8,6 @@ import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import { green, orange } from '@mui/material/colors'
 
 import { Title, Products } from 'components';
-import { useEffect, useState } from 'react';
-import group_service from 'services/group'
 
 const ProductHeader = ({ title }) => {
     return <Box display="flex">
@@ -19,13 +17,10 @@ const ProductHeader = ({ title }) => {
     </Box>
 }
 const HomePage = () => {
-    const [groups, setGroups] = useState([])
-    useEffect(() => {
-        group_service.get_all()
-            .then(data => {
-                setGroups(data)
-            })
-    })
+    const groups = [
+        { name: 'Nón bảo hộ', category: 'non-bao-ho' },
+        { name: 'Giày vải', category: 'giay' },
+    ]
     return (
         <>
             <Section variant='screen'>
@@ -70,8 +65,10 @@ const HomePage = () => {
 
             <Title title='Danh mục sản phẩm' backgroundColor={green[100]} />
             <Section id="product-category" variant='auto'>
-                <ProductHeader title="Sản phẩm bán chạy nhất" />
-                {/* <Products items={items} /> */}
+                {groups.map((group => <Box key={group.category}>
+                    <ProductHeader title={group.name} />
+                    <Products id={group.category} />
+                </Box>))}
             </Section>
         </>
     )
