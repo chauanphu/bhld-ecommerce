@@ -6,12 +6,12 @@ import { Products } from "components";
 import SortIcon from '@mui/icons-material/Sort';
 import {
     Box, Button, TextField, Autocomplete,
-    Pagination
+    Pagination, Typography
 } from "@mui/material"
 //
 
 //////////////////// Import React ////////////////////
-import { Routes, Route, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { useState, useEffect, useCallback } from "react";
 
 ///////// Import State /////////
@@ -65,21 +65,21 @@ const Bottom = ({ count = 0, onChange = (event, page) => { } }) => {
 
 }
 
-// const EmptyPage = () => {
-//     return (
-//         <Box height="50vh" display="flex">
-//             <Typography sx={{
-//                 typography: { xs: "h4", md: "h3" },
-//                 postion: 'absolute',
-//                 top: 0,
-//                 right: 0,
-//                 bottom: 0,
-//                 left: 0,
-//                 margin: 'auto',
-//                 textAlign: 'center'
-//             }} color="gray">Chua cap nhat hang hoa</Typography>
-//         </Box >)
-// }
+const EmptyPage = () => {
+    return (
+        <Box height="50vh" display="flex">
+            <Typography sx={{
+                typography: { xs: "h4", md: "h3" },
+                postion: 'absolute',
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0,
+                margin: 'auto',
+                textAlign: 'center'
+            }} color="gray">Chua cap nhat hang hoa</Typography>
+        </Box >)
+}
 
 const CategoryPage = () => {
     //State
@@ -116,13 +116,14 @@ const CategoryPage = () => {
         updateData()
     }, [updateData])
     return (
-        <Box>
-            <Routes>
-                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
-                    <Bottom count={count} onChange={updateData} />
-                } items={products} />}>
-                </Route>
-            </Routes>
+        <Box sx={{ minHeight: '50vh', pt: '3em' }}>
+            {products ? <>
+
+                <Products items={products} header={<Header />} />
+                <Bottom count={count} onChange={updateData} />
+            </>
+                : <EmptyPage />}
+
         </Box>
     )
 }
