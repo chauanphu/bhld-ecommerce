@@ -6,6 +6,11 @@ import { useState, useEffect, useCallback } from "react";
 ///////// Import State /////////
 import Product from 'services/products';
 
+/**
+ * Custom Pagniation
+ * @param {*} properties 
+ * @returns 
+ */
 const CustomPag = ({ count = 0, onChange = (event, page) => { } }) => {
     const page = Math.ceil(count / 12)
     return (
@@ -76,9 +81,9 @@ const Products = ({ header, id: category, showHeader }) => {
     return (
         <>
             {products.length > 0 ? <Box>
-                {showHeader && header}
-                {showHeader && <Divider sx={{ my: 3 }} />}
-                <Grid container spacing={2} columns={{ xs: 2, md: 3, lg: 4 }} justifyContent={{ xs: "center", md: "evenly" }}>
+                {header}
+                {header && <Divider sx={{ my: 3 }} />}
+                <Grid container spacing={2} columns={{ xs: 2, md: 3, lg: 4 }} justifyContent={{ xs: "center", md: "start" }}>
                     {products.map((item, index) => {
                         return (
                             <ProductCard key={index} item={item}></ProductCard>

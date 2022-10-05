@@ -11,7 +11,7 @@ import { Title, Products } from 'components';
 
 const ProductHeader = ({ title }) => {
     return <Box display="flex">
-        <Typography className="product-header">
+        <Typography fontWeight="bold" className="product-header">
             {title}
         </Typography>
     </Box>
@@ -66,8 +66,7 @@ const HomePage = () => {
             <Title title='Danh mục sản phẩm' backgroundColor={green[100]} />
             <Section id="product-category" variant='auto'>
                 {groups.map((group => <Box key={group.category}>
-                    <ProductHeader title={group.name} />
-                    <Products id={group.category} />
+                    <Products id={group.category} header={<ProductHeader title={group.name} />} />
                 </Box>))}
             </Section>
         </>

@@ -3,7 +3,7 @@ import { Products } from "components";
 
 ///////// Import Material Components /////////
 import SortIcon from '@mui/icons-material/Sort';
-import { Box, Button, TextField, Autocomplete } from "@mui/material"
+import { Box, Button, TextField, Autocomplete, Container } from "@mui/material"
 //
 
 //////////////////// Import React ////////////////////
@@ -45,9 +45,9 @@ const CategoryPage = () => {
     const { id } = useParams()
 
     return (
-        <Box sx={{ minHeight: '50vh', pt: '3em' }}>
+        <Container maxWidth="lg" sx={{ minHeight: '50vh', pt: '3em' }}>
             <Products id={id} header={<Header />} />
-        </Box>
+        </Container>
     )
 }
 
