@@ -12,10 +12,12 @@ const ProductCard = ({ item }) => {
                         {item.name}
                     </Typography>
                 } />
-                <Box component="img" src={item.image.src} alt="San pham" sx={{
-                    width: { xs: 200, md: 250 },
-                    height: { xs: 200, md: 250 }
-                }} />
+                {
+                    item.image && <Box component="img" src={item.image.src} alt={item.image.title} sx={{
+                        width: { xs: 200, md: 250 },
+                        height: { xs: 200, md: 250 }
+                    }} />
+                }
 
                 <CardContent>
                     <Box display="flex" alignItems="center" flexDirection='column'>

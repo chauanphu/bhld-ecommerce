@@ -20,24 +20,29 @@ const ProductDetailPage = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        Product.get_by_id(id).then(data => setDetail(data))
+        Product.get_by_id(id).then(data => {
+            console.log(data)
+            setDetail(data)
+        })
     }, [id])
 
     return (<>
         <Container maxWidth="xl">
             <Box display="flex" sx={{
                 flexDirection: { xs: 'column', md: 'row' },
-                mb: 10
+                my: 5
             }}>
                 <Box sx={{
                     alignSelf: { xs: 'center', md: 'start' }
                 }}>
-                    <Box component="img" src={detail.img} alt="San pham" sx={{
-                        maxWidth: 400,
-                        maxHeight: 400,
-                        width: 'auto',
-                        height: 'auto',
-                    }} />
+                    {
+                        detail.image && <Box component="img" src={detail.image.src} alt={detail.image.title} sx={{
+                            width: '100%',
+                            height: "100%",
+                            maxWidth: 400,
+                            maxHeight: 400,
+                        }} />
+                    }
                 </Box>
                 <Box sx={{
                     mt: { xs: 5, md: 0 },
@@ -45,7 +50,7 @@ const ProductDetailPage = () => {
                 }}>
                     <Stack>
                         <Typography sx={{ typography: { xs: 'h5', md: 'h4' } }}>{detail.name}</Typography>
-                        <Typography sx={{ mt: 2, typography: { xs: 'h7', md: 'h6' } }}>Mã sản phẩm: {detail.code}</Typography>
+                        {/* <Typography sx={{ mt: 2, typography: { xs: 'h7', md: 'h6' } }}>Mã sản phẩm: {detail.code}</Typography> */}
                         <Typography sx={{ color: 'green', mt: 2, typography: { xs: 'h6', md: 'h5' } }}>Giá: {detail.price ? detail.price + 'đ' : 'Xin liên hệ'}</Typography>
                         {/* <Rating sx={{ mt: 2, fontSize: "20px" }} name="half-rating" defaultValue={4.5} precision={detail.rating} /> */}
                         {detail.description && <Typography sx={{ mt: 2 }} variant="body1">{detail.description}</Typography>}

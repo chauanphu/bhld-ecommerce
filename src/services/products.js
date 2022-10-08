@@ -39,8 +39,10 @@ var Product = {
      * Return detailed data of a product
      * @param {string} id Id to be searched
      */
-    get_by_id: (id) => {
-        return fetch(link + '/' + id).then(res => { return res.json() })
+    get_by_id: (normed_name) => {
+        const url = `${link}/${normed_name}?type=shop`
+        console.log('URL', url)
+        return fetch(url).then(res => { return res.json() })
     }
 }
 
