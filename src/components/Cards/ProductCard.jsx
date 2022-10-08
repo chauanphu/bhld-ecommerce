@@ -3,15 +3,16 @@ import { Card, CardHeader, CardContent, CardActionArea, Box, Typography } from "
 import { Link } from 'react-router-dom'
 
 const ProductCard = ({ item }) => {
+    console.log(item)
     return (
-        <CardActionArea sx={{ mb: 5, mx: 2, maxWidth: { md: 250, xs: 200 } }} LinkComponent={Link} to={"/product/" + item.id}>
+        <CardActionArea sx={{ mb: 5, mx: 2, maxWidth: { md: 250, xs: 200 } }} LinkComponent={Link} to={"/product/" + item.normed_name}>
             <Card>
                 <CardHeader title={
                     <Typography textAlign="center" sx={{ fontSize: { xs: '1em', md: '1.2em' }, height: '58px', textOverflow: 'ellipsis' }}>
                         {item.name}
                     </Typography>
                 } />
-                <Box component="img" src={item.img} alt="San pham" sx={{
+                <Box component="img" src={item.image.src} alt="San pham" sx={{
                     width: { xs: 200, md: 250 },
                     height: { xs: 200, md: 250 }
                 }} />

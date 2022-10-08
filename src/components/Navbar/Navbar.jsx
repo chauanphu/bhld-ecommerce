@@ -61,7 +61,7 @@ const Navbar = () => {
             name: 'TRANG CHỦ', url: '/', value: '0', style: style
         },
         {
-            name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories, baseUrl: '/categories/'
+            name: 'SẢN PHẨM', url: '/categories/all', value: '1', style: style, sub_items: categories, baseUrl: 'categories/'
         },
         // { label: 'San pham', url: '/products', value: '1' },
         {
@@ -131,7 +131,7 @@ const Navbar = () => {
                 <Typography variant='h6' fontWeight='bold' textAlign='center' color='white' sx={{ width: '100%', height: '40px', backgroundColor: 'green' }}>
                     DANH MỤC
                 </Typography>
-                <Dropdown items={tabs} />
+                <Dropdown items={tabs} baseUrl='/categories/' />
             </Drawer>
         </>
     )

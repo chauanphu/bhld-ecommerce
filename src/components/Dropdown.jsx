@@ -5,7 +5,7 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useState } from 'react';
 import { grey } from '@mui/material/colors'
 
-const Dropdown = ({ items, isSub = false }) => {
+const Dropdown = ({ items, isSub = false, baseUrl }) => {
     const [open, setOpen] = useState(false)
     const handleExpand = () => {
         setOpen(!open)
@@ -18,7 +18,7 @@ const Dropdown = ({ items, isSub = false }) => {
                 return (
                     <Box key={index}>
                         <ListItem sx={{ padding: 0 }}>
-                            <ListItemButton component={Link} to={el.url ? el.url : el.baseUrl + el.id}>
+                            <ListItemButton component={Link} to={el.url ? el.url : baseUrl + el.normed_name}>
                                 <ListItemText sx={{ ...el.style }} disableTypography>{el.name}</ListItemText>
                             </ListItemButton>
                             {
@@ -38,7 +38,7 @@ const Dropdown = ({ items, isSub = false }) => {
                         {
                             el.sub_items ?
                                 (<Collapse in={open}>
-                                    <Dropdown items={el.sub_items} isSub={true} />
+                                    <Dropdown items={el.sub_items} isSub={true} baseUrl={baseUrl} />
                                 </Collapse>) :
                                 (<></>)
                         }
