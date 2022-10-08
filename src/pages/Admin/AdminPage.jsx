@@ -9,7 +9,16 @@ import axios from 'axios'
 
 const apiUrl = 'http://localhost:8000/api'
 
-const dataProvider = {
+const convertFileToBase64 = file =>
+    new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = reject;
+
+        reader.readAsDataURL(file.rawFile);
+    });
+
+const customDataProvider = {
     getList: (resource, params) => {
         const { page, perPage } = params.pagination;
         const { field, order } = params.sort;
@@ -61,9 +70,31 @@ const dataProvider = {
 
     update: (resource, params) => {
         delete params.data._id
-        return axios.put(`${apiUrl}/${resource}/${params.id}`, params.data).then(({ data }) => ({
-            data: { ...data, id: data._id },
-        }))
+        /**
+ * For posts update only, convert uploaded image in base 64 and attach it to
+ * the `picture` sent property, with `src` and `title` attributes.
+ */
+
+        // Freshly dropped pictures are File objects and must be converted to base64 strings
+        const newPictures = params.data.image
+
+        return convertFileToBase64(newPictures)
+            .then(base64Picture => {
+                return {
+                    src: base64Picture,
+                    title: `${params.data.name}`
+                }
+            }
+            )
+            .then(transformedNewPicture => {
+                params.data.image = transformedNewPicture
+                return axios.put(`${apiUrl}/${resource}/${params.id}`, params.data)
+                    .then(({ data }) => ({
+                        data: {
+                            ...data, id: data._id, image: data.image
+                        },
+                    }))
+            });
     },
 
     updateMany: (resource, params) => {
@@ -74,11 +105,27 @@ const dataProvider = {
         return axios.put(`${apiUrl}/${resource}?${JSON.stringify(query)}`, params.data).then(({ data }) => ({ data: data }));
     },
 
-    create: (resource, params) =>
-        axios.post(`${apiUrl}/${resource}`, params.data).then(({ data }) => ({
-            data: { ...params.data, id: data._id },
-        })),
+    create: (resource, params) => {
+        const newPictures = params.data.image
 
+        return convertFileToBase64(newPictures)
+            .then(base64Picture => {
+                return {
+                    src: base64Picture,
+                    title: `${params.data.name}`
+                }
+            }
+            )
+            .then(transformedNewPicture => {
+                params.data.image = transformedNewPicture
+                return axios.post(`${apiUrl}/${resource}`, params.data)
+                    .then(({ data }) => ({
+                        data: {
+                            ...data, id: data._id, image: data.image
+                        },
+                    }))
+            });
+    },
     delete: (resource, params) =>
         axios(`${apiUrl}/${resource}/${params.id}`, {
             method: 'DELETE',
@@ -99,7 +146,7 @@ const dataProvider = {
 
 const AdminPage = () => {
     return (
-        <Admin loginPage={LoginPage} basename="/admin" dataProvider={dataProvider}>
+        <Admin loginPage={LoginPage} basename="/admin" dataProvider={customDataProvider}>
             <Resource icon={ShoppingBasketIcon} name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} />
             <Resource icon={ArticleIcon} name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit} />
             <Resource icon={WorkspacesIcon} name="groups" list={GroupList} create={GroupCreate} edit={GroupEdit} />

@@ -1,10 +1,12 @@
-import { Create, NumberInput, SimpleForm, TextInput, ImageInput, ArrayInput, SimpleFormIterator, required } from 'react-admin'
+import { Create, NumberInput, SimpleForm, TextInput, ImageInput, ArrayInput, SimpleFormIterator, required, ImageField } from 'react-admin'
 import { RichTextInput } from 'ra-input-rich-text';
 
 const ProductCreate = (props) => {
     return <Create>
         <SimpleForm title='Tạo Category' {...props}>
-            <ImageInput label='Hình ảnh sản phẩm' source='image' />
+            <ImageInput label='Hình ảnh sản phẩm' source='image'>
+                <ImageField source="src" title="title" />
+            </ImageInput>
             <TextInput label='Tên' source='name' validate={required()} />
             <TextInput label='Tên rút gọn' validate={required()} source='normed_name' />
             <TextInput label='Danh mục cha' validate={required()} source='parent_path' />
