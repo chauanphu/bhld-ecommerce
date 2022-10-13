@@ -41,7 +41,7 @@ const EmptyPage = () => {
                 left: 0,
                 margin: 'auto',
                 textAlign: 'center'
-            }} color="gray">Chua cap nhat hang hoa</Typography>
+            }} color="gray">Chưa cập nhật hàng hóa</Typography>
         </Box >)
 }
 

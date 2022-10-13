@@ -4,10 +4,12 @@ import { GroupList, GroupCreate, GroupEdit } from './'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ArticleIcon from '@mui/icons-material/Article';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
-import LoginPage from "./LoginPage";
+import LoginPage from "./Login/LoginPage";
+import authProvider from './Login/authProvider';
+
 import axios from 'axios'
 
-const apiUrl = 'http://localhost:8000/api'
+const apiUrl = process.env.REACT_APP_API
 
 const convertFileToBase64 = file =>
     new Promise((resolve, reject) => {
@@ -150,7 +152,7 @@ const customDataProvider = {
 
 const AdminPage = () => {
     return (
-        <Admin loginPage={LoginPage} basename="/admin" dataProvider={customDataProvider}>
+        <Admin loginPage={LoginPage} basename="/admin" dataProvider={customDataProvider} authProvider={authProvider}>
             <Resource icon={ShoppingBasketIcon} name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} />
             <Resource icon={ArticleIcon} name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit} />
             <Resource icon={WorkspacesIcon} name="groups" list={GroupList} create={GroupCreate} edit={GroupEdit} />
