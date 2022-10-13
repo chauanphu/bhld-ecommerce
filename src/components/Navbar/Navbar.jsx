@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import { AppBar, Toolbar, Button, Stack, Typography, Box, IconButton, Drawer } from "@mui/material";
+import { AppBar, Toolbar, Button, Stack, Typography, Box, IconButton, Drawer, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -18,17 +18,17 @@ import './index.sass'
 
 const DropdownMenu = ({ items = [] }) => {
     return (
-        <Box className="dropdown-content">
+        <Grid container className="dropdown-content">
             {items.map(el => (
-                <Box key={el.normed_name} className='category'>
+                <Grid item key={el.normed_name} className='category'>
                     <Button sx={{ fontWeight: 'bold' }} key={el.normed_name} component={Link} to={'categories/' + el.normed_name}>{el.name}</Button>
                     {el.sub_items && el.sub_items.map(sub_el =>
                         <Button sx={{ fontSize: '12px' }} key={sub_el.normed_name} component={Link} to={'categories/' + sub_el.normed_name}>
                             {sub_el.name}
                         </Button>)}
-                </Box>)
+                </Grid>)
             )}
-        </Box>
+        </Grid>
     )
 }
 const Navbar = () => {

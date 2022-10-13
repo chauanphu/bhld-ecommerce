@@ -17,7 +17,6 @@ const ProductDetailPage = () => {
 
     useEffect(() => {
         Product.get_by_id(id).then(data => {
-            console.log(data)
             setDetail(data)
         })
     }, [id])
