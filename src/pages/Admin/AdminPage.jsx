@@ -1,9 +1,10 @@
 import { Admin, Resource } from 'react-admin'
-import { ProductList, ProductCreate, ProductEdit, CategoryList, CategoryEdit, CategoryCreate } from './'
+import { ProductList, ProductCreate, ProductEdit, CategoryList, CategoryEdit, CategoryCreate, UserList, UserCreate, UserEdit } from './'
 import { GroupList, GroupCreate, GroupEdit } from './'
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import ArticleIcon from '@mui/icons-material/Article';
 import WorkspacesIcon from '@mui/icons-material/Workspaces';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginPage from "./Login/LoginPage";
 import authProvider from './Login/authProvider';
 
@@ -155,6 +156,7 @@ const AdminPage = () => {
         <Admin loginPage={LoginPage} basename="/admin" dataProvider={customDataProvider} authProvider={authProvider}>
             <Resource icon={ShoppingBasketIcon} name="products" list={ProductList} create={ProductCreate} edit={ProductEdit} />
             <Resource icon={ArticleIcon} name="categories" list={CategoryList} create={CategoryCreate} edit={CategoryEdit} />
+            <Resource icon={AccountCircleIcon} name="users" list={UserList} create={UserCreate} edit={UserEdit} />
             <Resource icon={WorkspacesIcon} name="groups" list={GroupList} create={GroupCreate} edit={GroupEdit} />
         </Admin>
     )
