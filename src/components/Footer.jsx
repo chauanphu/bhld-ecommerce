@@ -37,19 +37,19 @@ const Footer = () => {
                                     <ListItem>
                                         <ListItemIcon sx={{ color: "white" }}><PhoneIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
-                                            0945 316 280
+                                            0947 511 159
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem>
                                         <ListItemIcon sx={{ color: "white" }}><ZaloIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
-                                            0945 316 280
+                                            0947 511 159
                                         </ListItemText>
                                     </ListItem>
                                     <ListItem>
                                         <ListItemIcon sx={{ color: "white" }}><EmailIcon /></ListItemIcon>
                                         <ListItemText variant="body1">
-                                            phuclinh@baoholaodong.com
+                                            phuchauan@gmail.com
                                         </ListItemText>
                                     </ListItem>
                                 </List>

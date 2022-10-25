@@ -7,16 +7,20 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
 import { green, orange } from '@mui/material/colors'
 
-import { Title, Products as Carousel } from 'components';
+import { Title, Products } from 'components';
+
 const ProductHeader = ({ title }) => {
     return <Box display="flex">
-        <Typography className="product-header">
+        <Typography fontWeight="bold" className="product-header">
             {title}
         </Typography>
     </Box>
 }
 const HomePage = () => {
-    const items = []
+    const groups = [
+        { name: 'Nón bảo hộ', category: 'non-bao-ho' },
+        { name: 'Giày vải', category: 'giay' },
+    ]
     return (
         <>
             <Section variant='screen'>
@@ -61,8 +65,9 @@ const HomePage = () => {
 
             <Title title='Danh mục sản phẩm' backgroundColor={green[100]} />
             <Section id="product-category" variant='auto'>
-                <ProductHeader title="Sản phẩm bán chạy nhất" />
-                <Carousel items={items} />
+                {groups.map((group => <Box key={group.category}>
+                    <Products id={group.category} header={<ProductHeader title={group.name} />} />
+                </Box>))}
             </Section>
         </>
     )

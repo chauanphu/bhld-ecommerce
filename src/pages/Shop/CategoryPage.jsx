@@ -1,21 +1,13 @@
 ///////// Import Custom Components /////////
 import { Products } from "components";
 
-
 ///////// Import Material Components /////////
 import SortIcon from '@mui/icons-material/Sort';
-import {
-    Box, Button, TextField, Autocomplete,
-    Pagination
-} from "@mui/material"
+import { Box, Button, TextField, Autocomplete, Container } from "@mui/material"
 //
 
 //////////////////// Import React ////////////////////
-import { Routes, Route, useParams } from 'react-router-dom'
-import { useState, useEffect, useCallback } from "react";
-
-///////// Import State /////////
-import Product from 'services/products';
+import { useParams } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -47,83 +39,15 @@ const Header = () => {
     )
 }
 
-const Bottom = ({ count = 0, onChange = (event, page) => { } }) => {
-    const page = Math.ceil(count / 12)
-    return (
-        <>
-            {
-                (page > 1) &&
-                <Pagination sx={{
-                    '.MuiPagination-ul': {
-                        display: 'flex',
-                        justifyContent: 'center'
-                    }
-                }} count={page} onChange={onChange} />
-            }
-        </>
-    )
-
-}
-
-// const EmptyPage = () => {
-//     return (
-//         <Box height="50vh" display="flex">
-//             <Typography sx={{
-//                 typography: { xs: "h4", md: "h3" },
-//                 postion: 'absolute',
-//                 top: 0,
-//                 right: 0,
-//                 bottom: 0,
-//                 left: 0,
-//                 margin: 'auto',
-//                 textAlign: 'center'
-//             }} color="gray">Chua cap nhat hang hoa</Typography>
-//         </Box >)
-// }
-
 const CategoryPage = () => {
     //State
-    const [products, setProduct] = useState([])
-    const [count, setCount] = useState(0)
+
     const { id } = useParams()
 
-    const updateData = useCallback((event, page) => {
-        if (id === 'all') {
-            Product.get_all(page)
-                .then(res => {
-                    const { total_count, data } = res
-                    setCount(total_count)
-                    return data
-                })
-                .then(data => {
-                    setProduct(data)
-                })
-        } else {
-            Product.get_by_category(id)
-                .then(res => {
-                    const { total_count, data } = res
-                    setCount(total_count)
-                    return data
-                })
-                .then(data => {
-                    setProduct(data)
-                })
-        }
-    }, [id])
-
-    //Effects
-    useEffect(() => {
-        updateData()
-    }, [updateData])
     return (
-        <Box>
-            <Routes>
-                <Route path="/" element={<Products header={<Header />} showHeader={false} bottom={
-                    <Bottom count={count} onChange={updateData} />
-                } items={products} />}>
-                </Route>
-            </Routes>
-        </Box>
+        <Container maxWidth="lg" sx={{ minHeight: '50vh', pt: '3em' }}>
+            <Products id={id} header={<Header />} />
+        </Container>
     )
 }
 

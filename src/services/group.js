@@ -1,6 +1,4 @@
-const link = process.env.REACT_APP_API + "/categories"
-
-console.log('API: ', process.env)
+const link = process.env.REACT_APP_API + "/groups"
 
 var category = {
     get_all: () => {

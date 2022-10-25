@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import HomePage from "./pages/Home/HomePage";
 import { ShopPage, ProductDetailPage, CategoryPage, NotFoundPage, ContactPage, HomePage } from 'pages/Shop'
-import { LoginPage, AdminPage } from 'pages/Admin'
+import { AdminPage } from 'pages/Admin'
 import "swiper/css/bundle";
 
 const App = () => {
@@ -15,7 +15,6 @@ const App = () => {
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-        <Route path="/login" element={<LoginPage />} />
         <Route path="/admin/*" element={<AdminPage />} />
       </Routes>
     </Router>
