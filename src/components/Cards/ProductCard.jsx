@@ -3,7 +3,6 @@ import { Card, CardHeader, CardContent, CardActionArea, Box, Typography } from "
 import { Link } from 'react-router-dom'
 
 const ProductCard = ({ item }) => {
-    console.log(item)
     return (
         <CardActionArea sx={{ mb: 5, mx: 2, maxWidth: { md: 250, xs: 200 } }} LinkComponent={Link} to={"/product/" + item.normed_name}>
             <Card>
